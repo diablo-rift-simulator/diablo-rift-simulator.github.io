@@ -211,14 +211,14 @@
     };
 
     function determineGemRank() {
-        const distribution = createDistribution(five_star_gem_types, five_star_probabilities, 10);
+        const distribution = createDistribution(five_star_gem_types, five_star_probabilities, 100);
         const index = randomIndex(distribution);
 
         return five_star_gem_types[index];
     }
 
     function pickGem() {
-        const distribution = createDistribution(gem_types, gem_probabilities, 10);
+        const distribution = createDistribution(gem_types, gem_probabilities, 100);
         const index = randomIndex(distribution);
         switch (gem_types[index]) {
             case 1:
