@@ -1,0 +1,93 @@
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    font-family: 'Spectral', serif;
+    font-size: 30px;
+    color: white;
+    background-image: url("bg2.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.doors {
+    display: flex;
+}
+
+.door {
+    background: #fafafa;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5) inset;
+
+    width: 100px;
+    height: 150px;
+    overflow: hidden;
+
+    border-radius: 1ex;
+    margin: 1ch;
+}
+
+.boxes {
+    /* transform: translateY(0); */
+    transition: transform 1s ease-in-out;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 3rem;
+}
+
+.buttons {
+    margin: 1rem 0 2rem 0;
+}
+
+button {
+    cursor: pointer;
+
+    font-size: 1.2rem;
+    text-transform: uppercase;
+
+    margin: 0 0.2rem 0 0.2rem;
+}
+
+.info {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.checked {
+    color: orange;
+}
+
+.small {
+    transform: scale(0.5);
+    -ms-transform: scale(0.5); /* IE 9 */
+    -webkit-transform: scale(0.5); /* Safari and Chrome */
+    -o-transform: scale(0.5); /* Opera */
+    -moz-transform: scale(0.5); /* Firefox */
+}
