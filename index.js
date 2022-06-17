@@ -59,8 +59,9 @@
 
     const doors = document.querySelectorAll(".door");
     document.querySelector("#spinner").addEventListener("click", spin);
+    document.querySelector("#auto_spin").addEventListener("click", autoSpin);
 
-    async function spin() {
+    async function spin(event, timeoutDuration = 100) {
         money_spent += 25;
         document.getElementById('money_spent').innerText = money_spent;
         init(false, 1, 2);
@@ -69,15 +70,21 @@
             const duration = parseInt(boxes.style.transitionDuration);
             boxes.style.transform = "translateY(0)";
             await new Promise((resolve) => {
-                setTimeout(resolve, duration * 100);
-                // door.parentElement.querySelector('#stars').style.display = 'block';
+                setTimeout(resolve, duration * timeoutDuration);
             });
         }
         for (const door of doors) {
             await new Promise((resolve) => {
-                setTimeout(resolve, 200);
+                setTimeout(resolve, timeoutDuration * 2);
                 door.parentElement.querySelector('#stars').style.display = 'block';
             });
+        }
+    }
+
+    async function autoSpin() {
+        let currentFiveStarAmount = five_star_gem_count;
+        while (five_star_gem_count === currentFiveStarAmount) {
+            await spin(null, 1)
         }
     }
 
