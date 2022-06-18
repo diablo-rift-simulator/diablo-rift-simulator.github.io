@@ -1,6 +1,6 @@
 html,
 body {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0;
     border: 0;
@@ -25,26 +25,55 @@ body {
     font-size: 30px;
     color: white;
     background-image: url("bg2.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.app-headline, .app-subheadline {
+    font-size: 22px;
+}
+
+.app-subheadline {
+    margin: 0;
+    font-size: 20px;
+}
+
 .doors {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .door {
     background: #fafafa;
     box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5) inset;
-
-    width: 100px;
-    height: 150px;
+    /* width: 100px;
+    height: 150px; */
+    width: 55px;
+    height: 80px;
     overflow: hidden;
-
     border-radius: 1ex;
-    margin: 1ch;
+    margin: 13px;
+}
+
+.door-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#stars {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: left;
+    margin: 0 13px;
+    font-size: 8px;
 }
 
 .boxes {
@@ -56,12 +85,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-size: 3rem;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
 }
 
 .buttons {
     margin: 1rem 0 2rem 0;
+}
+
+.buttons img {
+    display: block;
+    margin: 0 auto
 }
 
 button {
@@ -90,4 +128,68 @@ button {
     -webkit-transform: scale(0.5); /* Safari and Chrome */
     -o-transform: scale(0.5); /* Opera */
     -moz-transform: scale(0.5); /* Firefox */
+}
+
+@media (min-width: 400px) { 
+    .doors {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .app-subheadline {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 660px) { 
+    .door {
+        width: 100px;
+        height: 150px;
+    }
+
+    #stars {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 767px) { 
+    .app-headline {
+        font-size: 30px;
+    }
+
+    .app-subheadline {
+        font-size: 28px;
+    }
+
+    .buttons img {
+        display: inline-block;
+    }
+
+    .buttons {
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: 992px) { 
+    .app-headline {
+        font-size: 30px;
+    }
+
+    .doors {
+        margin-top: 20px;
+    }
+
+    .buttons {
+        margin-top: 80px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .doors {
+        display: flex;
+    }
+
+    .app-headline {
+        font-size: 40px;
+    }
 }
