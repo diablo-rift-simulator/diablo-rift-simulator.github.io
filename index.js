@@ -189,11 +189,10 @@
                     door.parentElement.removeChild(stars);
                 }
                 stars = document.createElement("div");
-                stars.style.fontSize = 'medium';
                 stars.style.position = 'absolute';
                 stars.style.display = 'none';
                 stars.id = 'stars';
-                stars.innerHTML = '&nbsp&nbsp&nbsp&nbsp' + '⭐'.repeat(gem.rank);
+                stars.innerHTML = '⭐'.repeat(gem.rank);
                 door.parentElement.appendChild(stars)
             }
         }
