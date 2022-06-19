@@ -195,7 +195,13 @@
                 stars.style.position = 'absolute';
                 stars.style.display = 'none';
                 stars.id = 'stars';
-                stars.innerHTML = '⭐'.repeat(gem.rank);
+
+                let starsHtml = '<i class="fa-solid fa-star yellow-star"></i>'.repeat(gem.rank);
+                if (gem.fiveStarGem) {
+                    starsHtml += '<i class="fa-solid fa-star"></i>'.repeat(5 - gem.rank)
+                }
+                stars.innerHTML = starsHtml;
+
                 door.parentElement.appendChild(stars)
             }
         }
@@ -239,12 +245,14 @@
             case 1:
                 return {
                     name: one_star_gems[Math.floor(Math.random() * one_star_gems.length)],
-                    rank: 1
+                    rank: 1,
+                    fiveStarGem: false
                 };
             case 2:
                 return {
                     name: two_star_gems[Math.floor(Math.random() * two_star_gems.length)],
-                    rank: 2
+                    rank: 2,
+                    fiveStarGem: false
                 };
             case 5:
                 const gemRank = determineGemRank();
@@ -255,7 +263,8 @@
 
                 return {
                     name: five_star_gems[Math.floor(Math.random() * five_star_gems.length)],
-                    rank: gemRank
+                    rank: gemRank,
+                    fiveStarGem: true
                 };
         }
     }

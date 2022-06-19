@@ -71,9 +71,13 @@ body {
     margin-right: auto;
     left: 0;
     right: 0;
-    text-align: left;
+    text-align: center;
     margin: 0 13px;
-    font-size: 8px;
+    font-size: 10px;
+}
+
+.yellow-star {
+    color: #fdd835;
 }
 
 .boxes {
