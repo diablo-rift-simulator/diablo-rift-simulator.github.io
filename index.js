@@ -5,6 +5,8 @@
 
     let money_spent = 0;
 
+    let pity_system_active = false;
+
     const gem_types = [1, 2, 5];
 
     const gem_probabilities = [0.754, 0.201, 0.045];
@@ -35,7 +37,6 @@
     const two_star_gems = [
         'gem/power_and_command',
         'gem/the_hunger',
-        'gem/fervent_fang',
         'gem/bloody_reach',
         'gem/cutthroats_grin',
         'gem/chained_death',
@@ -63,6 +64,11 @@
 
     async function spin(event, timeoutDuration = 100) {
         money_spent += 25;
+
+        if (money_spent % 125 === 0) {
+            pity_system_active = true;
+        }
+
         document.getElementById('money_spent').innerText = money_spent;
         init(false, 1, 2);
         for (const door of doors) {
@@ -225,7 +231,13 @@
 
     function pickGem() {
         const distribution = createDistribution(gem_types, gem_probabilities, 100);
-        const index = randomIndex(distribution);
+        let index = randomIndex(distribution);
+
+        if (pity_system_active) {
+            index = 2;
+            pity_system_active = false;
+        }
+
         switch (gem_types[index]) {
             case 1:
                 return {
@@ -239,7 +251,7 @@
                 };
             case 5:
                 const gemRank = determineGemRank();
-                console.log(gemRank);
+
                 if (gemRank === 5) {
                     document.getElementById('five_start_gems_amount').innerText = ++five_star_gem_count;
                 }
