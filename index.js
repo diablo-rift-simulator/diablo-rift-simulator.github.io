@@ -174,10 +174,7 @@
                 box.classList.add("box");
                 box.style.width = door.clientWidth + "px";
                 box.style.height = door.clientHeight + "px";
-                box.innerHTML = '<img src="' + pool[i] + '.webp' + '" alt=""/>';
-                if (!firstInit) {
-                    box.innerHTML = '<img src="' + pool[i] + '.webp' + '" alt=""/>';
-                }
+                box.innerHTML = '<img src="assets/' + pool[i] + '.webp' + '" alt=""/>';
                 boxesClone.appendChild(box);
             }
 

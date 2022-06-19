@@ -24,7 +24,7 @@ body {
     font-family: 'Spectral', serif;
     font-size: 30px;
     color: white;
-    background-image: url("bg2.jpg");
+    background-image: url("assets/background.jpg");
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
