@@ -82,7 +82,7 @@
         for (const door of doors) {
             await new Promise((resolve) => {
                 setTimeout(resolve, timeoutDuration * 2);
-                door.parentElement.querySelector('#stars').style.display = 'block';
+                door.parentElement.querySelector('#stars').style.display = 'grid';
             });
         }
     }
