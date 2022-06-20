@@ -100,7 +100,7 @@ body {
 }
 
 .buttons {
-    margin: 20px 0;
+    margin: 20px 0 60px 0;
     display: flex;
 }
 
@@ -143,6 +143,12 @@ button {
     margin-right: 10px;
 }
 
+.donate-btn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
 @media (min-width: 400px) { 
     .doors {
         display: grid;
@@ -173,6 +179,12 @@ button {
 
     .buttons img {
         width: 250px;
+    }
+    
+    .donate-btn {
+        position: relative;
+        bottom: unset;
+        right: unset;
     }
 }
 
