@@ -1,7 +1,8 @@
 html,
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100%;
     margin: 0;
     border: 0;
     padding: 0;
@@ -20,7 +21,7 @@ body {
 
 #app {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     font-family: 'Spectral', serif;
     font-size: 30px;
     color: white;
@@ -47,18 +48,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 .door {
     background: #fafafa;
     box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5) inset;
-    /* width: 100px;
-    height: 150px; */
     width: 55px;
     height: 80px;
     overflow: hidden;
     border-radius: 1ex;
-    margin: 13px;
+    margin: 0 13px;
 }
 
 .door-container {
@@ -73,7 +73,9 @@ body {
     right: 0;
     text-align: center;
     margin: 0 13px;
+    margin-top: 5px;
     font-size: 10px;
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .yellow-star {
@@ -98,12 +100,15 @@ body {
 }
 
 .buttons {
-    margin: 1rem 0 2rem 0;
+    margin: 20px 0;
+    display: flex;
 }
 
 .buttons img {
     display: block;
-    margin: 0 auto
+    margin: 0 auto;
+    height: 50px;
+    width: 150px;
 }
 
 button {
@@ -134,6 +139,10 @@ button {
     -moz-transform: scale(0.5); /* Firefox */
 }
 
+#spinner {
+    margin-right: 10px;
+}
+
 @media (min-width: 400px) { 
     .doors {
         display: grid;
@@ -143,16 +152,44 @@ button {
     .app-subheadline {
         margin-bottom: 20px;
     }
+
+    #app {
+        overflow: hidden;
+    }
+
+    .buttons {
+        display: block;
+        margin: 20px 0;
+    }
+
+    .buttons img {
+        height: auto;
+    }
+
+    #spinner {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .buttons img {
+        width: 250px;
+    }
 }
 
 @media (min-width: 660px) { 
     .door {
         width: 100px;
         height: 150px;
+        margin: 13px;
     }
 
     #stars {
         font-size: 15px;
+        margin-top: 0;
+    }
+
+    .buttons img {
+        width: 300px;
     }
 }
 
@@ -171,6 +208,10 @@ button {
 
     .buttons {
         margin-top: 40px;
+    }
+
+    #spinner {
+        margin-bottom: 0px;
     }
 }
 
@@ -195,5 +236,9 @@ button {
 
     .app-headline {
         font-size: 40px;
+    }
+
+    #spinner {
+        margin-bottom: 0;
     }
 }
