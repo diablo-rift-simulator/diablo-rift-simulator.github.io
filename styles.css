@@ -78,6 +78,17 @@ body {
     grid-template-columns: repeat(5, 1fr);
 }
 
+.stats {
+    font-size: 10px;
+    margin-top: 100px;
+    text-align: right;
+}
+
+.numbers {
+    max-width: 20%;
+    text-align: left;
+}
+
 .yellow-star {
     color: #fdd835;
 }
@@ -198,6 +209,10 @@ button {
     #stars {
         font-size: 15px;
         margin-top: 0;
+    }
+
+    .stats {
+        font-size: 15px;
     }
 
     .buttons img {

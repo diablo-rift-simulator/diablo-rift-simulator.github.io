@@ -7,6 +7,19 @@
 
     let pity_system_active = false;
 
+    let total_gem_count = 0;
+
+    let gem_count = {
+        1: 0.0,
+        2: 0.0,
+        5: {
+            2: 0.0,
+            3: 0.0,
+            4: 0.0,
+            5: 0.0
+        }
+    }
+
     const gem_types = [1, 2, 5];
 
     const gem_probabilities = [0.754, 0.201, 0.045];
@@ -145,6 +158,7 @@
             let gem = {rank: 5};
             if (!firstInit) {
                 gem = pickGem();
+                calculateDropRate(gem);
                 pool.push(gem.name);
                 boxesClone.addEventListener(
                     "transitionstart",
@@ -243,12 +257,14 @@
 
         switch (gem_types[index]) {
             case 1:
+                document.getElementById('one_star_count').innerText = ++gem_count["1"];
                 return {
                     name: one_star_gems[Math.floor(Math.random() * one_star_gems.length)],
                     rank: 1,
                     fiveStarGem: false
                 };
             case 2:
+                document.getElementById('two_star_count').innerText = ++gem_count["2"];
                 return {
                     name: two_star_gems[Math.floor(Math.random() * two_star_gems.length)],
                     rank: 2,
@@ -257,8 +273,19 @@
             case 5:
                 const gemRank = determineGemRank();
 
-                if (gemRank === 5) {
-                    document.getElementById('five_start_gems_amount').innerText = ++five_star_gem_count;
+                switch (gemRank) {
+                    case 2:
+                        document.getElementById('two_of_five_star_count').innerText = ++gem_count["5"]["2"];
+                        break;
+                    case 3:
+                        document.getElementById('three_star_count').innerText = ++gem_count["5"]["3"];
+                        break;
+                    case 4:
+                        document.getElementById('four_star_count').innerText = ++gem_count["5"]["4"];
+                        break;
+                    case 5:
+                        document.getElementById('five_star_count').innerText = ++five_star_gem_count;
+                        document.getElementById('five_start_gems_amount').innerText = five_star_gem_count;
                 }
 
                 return {
@@ -267,6 +294,16 @@
                     fiveStarGem: true
                 };
         }
+    }
+
+    function calculateDropRate() {
+        document.getElementById('total_gem_count').innerText = ++total_gem_count;
+        document.getElementById('one_star_percentage').innerText = (gem_count["1"] / total_gem_count * 100).toFixed(3);
+        document.getElementById('two_star_percentage').innerText = (gem_count["2"] / total_gem_count * 100).toFixed(3);
+        document.getElementById('two_of_five_star_percentage').innerText = (gem_count["5"]["2"] / total_gem_count * 100).toFixed(3);
+        document.getElementById('three_star_percentage').innerText = (gem_count["5"]["3"] / total_gem_count * 100).toFixed(3);
+        document.getElementById('four_star_percentage').innerText = (gem_count["5"]["4"] / total_gem_count * 100).toFixed(3);
+        document.getElementById('five_star_percentage').innerText = (five_star_gem_count / total_gem_count * 100).toFixed(3);
     }
 
     init();
