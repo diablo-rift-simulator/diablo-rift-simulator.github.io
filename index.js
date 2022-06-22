@@ -73,9 +73,6 @@
 
 
     if (window.matchMedia("(max-width: 1200px)").matches) {
-        console.log($('#statsWrapper'));
-        console.log($('#statsModalContent'));
-        console.log("ok");
         var stats = $('#statsWrapper').html();
 
         $('#statsModalContent').append(stats);
