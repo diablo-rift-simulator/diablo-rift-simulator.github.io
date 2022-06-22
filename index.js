@@ -71,6 +71,17 @@
         'gem/blessing_of_the_worthy',
     ];
 
+
+    if (window.matchMedia("(max-width: 1200px)").matches) {
+        console.log($('#statsWrapper'));
+        console.log($('#statsModalContent'));
+        console.log("ok");
+        var stats = $('#statsWrapper').html();
+
+        $('#statsModalContent').append(stats);
+        $('#statsWrapper').remove();
+    }
+
     const doors = document.querySelectorAll(".door");
     document.querySelector("#spinner").addEventListener("click", spin);
     document.querySelector("#auto_spin").addEventListener("click", autoSpin);
