@@ -11,110 +11,207 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="class
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-<div id="app">
-    <h1 class="app-headline">$25 Rift Simulator</h1>
-    <p class="app-subheadline">
-        5 Star gems: <span id="five_start_gems_amount">0</span>
-    </p>
-    <p class="app-subheadline">
-        USD SPENT: $<span id="money_spent">0</span>
-    </p>
+    <div id="app">
+        <div class="row" style="width: 80%">
+            <div class="col empty-col"></div>
+            <div class="col col" style="text-align: center">
+                <h1 class="app-headline ">$25 Rift Simulator</h1>
+                <p class="app-subheadline">
+                    5 Star gems: <span id="five_start_gems_amount">0</span>
+                </p>
+                <p class="app-subheadline">
+                    USD SPENT: $<span id="money_spent">0</span>
+                </p>
+            </div>
+            <div id="statsWrapper" class="col stats">
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col empty-centered"></div>
+                    <div class="col col-stars">
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                    </div>
+                    <div class="col numbers"><span id="one_star_count">0</span> (<span id="one_star_percentage">0</span>%)</div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                    <div class="col empty-centered"></div>
+                    <div class="col col-stars">
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                    </div>
+                    <div class="col numbers"><span id="two_star_count">0</span> (<span id="two_star_percentage">0</span>%)</div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                    <div class="col empty-centered"></div>
+                    <div class="col col-stars">
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star col"></i>
+                        <i class="fa-solid fa-star col"></i>
+                        <i class="fa-solid fa-star col"></i>
+                    </div>
+                    <div class="col numbers"><span id="two_of_five_star_count">0</span> (<span id="two_of_five_star_percentage">0</span>%)</div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                    <div class="col empty-centered"></div>
+                    <div class="col col-stars">
+                        <i class="fa-solid fa-star yellow-star col" style="max-width: 25%"></i>
+                        <i class="fa-solid fa-star yellow-star col" style="max-width: 25%"></i>
+                        <i class="fa-solid fa-star yellow-star col" style="max-width: 25%"></i>
+                        <i class="fa-solid fa-star col" style="max-width: 25%"></i>
+                        <i class="fa-solid fa-star col" style="max-width: 25%"></i>
+                    </div>
+                    <div class="col numbers"><span id="three_star_count">0</span> (<span id="three_star_percentage">0</span>%)</div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                    <div class="col empty-centered"></div>
+                    <div class="col col-stars">
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star col"></i>
 
-    <div class="doors">
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
+                    </div>
+                    <div class="col numbers"><span id="four_star_count">0</span> (<span id="four_star_percentage">0</span>%)</div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                    <div class="col empty-centered"></div>
+                    <div class="col col-stars">
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                        <i class="fa-solid fa-star yellow-star col"></i>
+                    </div>
+                    <div class="col numbers"><span id="five_star_count">0</span> (<span id="five_star_percentage">0</span>%)</div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                    <div class="col empty-centered"></div>
+                    <div class="col">
+                        All gems:
+                    </div>
+                    <div class="col numbers"><span id="total_gem_count">0</span></div>
                 </div>
             </div>
         </div>
 
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
+
+        <div class="doors">
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="door-container">
+                <div class="door">
+                    <div class="boxes">
+                        <!-- <div class="box">?</div> -->
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
-            </div>
+        <div class="buttons">
+            <img src="assets/button/spin_with_extra_value.png" id="spinner">
+            <img src="assets/button/auto_spin.png" id="auto_spin">
         </div>
+        <form action="https://www.paypal.com/donate" method="post" target="_top" class="donate-btn">
+            <input type="hidden" name="hosted_button_id" value="NAQ3AXX63WNSW"/>
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit"
+                title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
+            <img alt="" border="0" src="https://www.paypal.com/en_PL/i/scr/pixel.gif" width="1" height="1"/>
+        </form>
 
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
-            </div>
-        </div>
+        <button type="button" class="btn btn-modal" data-bs-toggle="modal" data-bs-target="#statsModal">
+            <i class="fas fa-bars fa-2x ham-icon"></i>
+        </button>
+    </div>
 
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
-            </div>
-        </div>
+    <div class="modal fade" id="statsModal" tabindex="-1" aria-labelledby="statsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div id="statsModalContent" class="modal-content">
 
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="door-container">
-            <div class="door">
-                <div class="boxes">
-                    <!-- <div class="box">?</div> -->
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="buttons">
-        <img src="assets/button/spin_with_extra_value.png" id="spinner">
-        <img src="assets/button/auto_spin.png" id="auto_spin">
-    </div>
-    <form action="https://www.paypal.com/donate" method="post" target="_top" class="donate-btn">
-        <input type="hidden" name="hosted_button_id" value="NAQ3AXX63WNSW" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-        <img alt="" border="0" src="https://www.paypal.com/en_PL/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-</div>
-<script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

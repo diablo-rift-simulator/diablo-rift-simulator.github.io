@@ -39,6 +39,38 @@ body {
     font-size: 22px;
 }
 
+.ham-icon {
+    color: white;
+    height: 20px;
+}
+
+.ham-icon:active {
+    border: none;
+}
+
+.btn-modal:hover, .btn-modal:active {
+    border: none;
+}
+
+.modal-content {
+    height: 50vh;
+    text-align: left;
+    justify-content: center;
+    padding: 20%;
+    background-color: darkgray !important;
+}
+
+.numbers {
+    text-align: center !important;
+}
+
+.btn-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+}
+
 .app-subheadline {
     margin: 0;
     font-size: 20px;
@@ -76,6 +108,21 @@ body {
     margin-top: 5px;
     font-size: 10px;
     grid-template-columns: repeat(5, 1fr);
+}
+
+.stats {
+    font-size: 10px;
+    margin-top: 100px;
+    text-align: right;
+}
+
+.numbers {
+    max-width: 20%;
+    text-align: left;
+}
+
+.empty-col, .empty-centered {
+    display: none;
 }
 
 .yellow-star {
@@ -200,6 +247,10 @@ button {
         margin-top: 0;
     }
 
+    .stats {
+        font-size: 15px;
+    }
+
     .buttons img {
         width: 300px;
     }
@@ -253,4 +304,31 @@ button {
     #spinner {
         margin-bottom: 0;
     }
+
+    .btn-modal {
+        display: none !important;
+    }
+
+    .numbers {
+        text-align: left !important;
+    }
+
+    .col {
+        text-align: right;
+    }
+
+    .empty-col {
+        display: block;
+    }
+
+    .col-stars {
+        text-align: left;
+    }
 }
+
+@media (min-width: 1450px) {
+    .empty-centered {
+        display: block;
+    }
+}
+
