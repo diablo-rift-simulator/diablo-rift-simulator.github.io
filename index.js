@@ -124,46 +124,12 @@
             const boxes = door.querySelector(".boxes");
             const boxesClone = boxes.cloneNode(false);
 
-            let pool = [
-                'crest',
-                'gem/trickshot_gem',
-                'gem/everlasting_torment',
-                'gem/the_black_rose',
-                'gem/seleds_weakening',
-                'gem/everlasting_torment',
-                'gem/chained_death',
-                'gem/berserkers_eye',
-                'gem/mocking_laughter',
-                'gem/zod_stone',
-                'gem/bottled_hope',
-                'gem/phoenix_ashes',
-                'gem/bsj',
-                'gem/chip_of_stoned_flesh',
-                'gem/echoing_shade',
-                'gem/power_and_command',
-                'gem/the_hunger',
-                'gem/fervent_fang',
-                'gem/bloody_reach',
-                'gem/cutthroats_grin',
-                'gem/chained_death',
-                'gem/lightning_core',
-                'gem/battleguard',
-                'gem/followers_burden',
-                'gem/unity_crystal',
-                'gem/howlers_call',
-                'gem/zwensons_haunting',
-                'gem/seeping_bile',
-                'gem/blessing_of_the_' +
-                'worthy',
-                'gem/caarsens_invigoration',
-                'gem/defiant_soul',
-                'gem/freedom_and_devotion',
-                'gem/nightmare_wreath',
-                'gem/respite_stone',
-                'gem/seleds_weakening',
-                'gem/pain_of_subjugation',
-            ];
-            let gem = {rank: 5};
+            let pool = []
+                .concat(one_star_gems, two_star_gems, five_star_gems)
+                .sort(() => 0.5 - Math.random());
+            pool.unshift('crest');
+            let gem = {};
+
             if (!firstInit) {
                 gem = pickGem();
                 calculateDropRate(gem);
@@ -306,12 +272,12 @@
 
     function calculateDropRate() {
         document.getElementById('total_gem_count').innerText = ++total_gem_count;
-        document.getElementById('one_star_percentage').innerText = (gem_count["1"] / total_gem_count * 100).toFixed(3);
-        document.getElementById('two_star_percentage').innerText = (gem_count["2"] / total_gem_count * 100).toFixed(3);
-        document.getElementById('two_of_five_star_percentage').innerText = (gem_count["5"]["2"] / total_gem_count * 100).toFixed(3);
-        document.getElementById('three_star_percentage').innerText = (gem_count["5"]["3"] / total_gem_count * 100).toFixed(3);
-        document.getElementById('four_star_percentage').innerText = (gem_count["5"]["4"] / total_gem_count * 100).toFixed(3);
-        document.getElementById('five_star_percentage').innerText = (five_star_gem_count / total_gem_count * 100).toFixed(3);
+        document.getElementById('one_star_percentage').innerText = (gem_count["1"] / total_gem_count * 100).toFixed(2);
+        document.getElementById('two_star_percentage').innerText = (gem_count["2"] / total_gem_count * 100).toFixed(2);
+        document.getElementById('two_of_five_star_percentage').innerText = (gem_count["5"]["2"] / total_gem_count * 100).toFixed(2);
+        document.getElementById('three_star_percentage').innerText = (gem_count["5"]["3"] / total_gem_count * 100).toFixed(2);
+        document.getElementById('four_star_percentage').innerText = (gem_count["5"]["4"] / total_gem_count * 100).toFixed(2);
+        document.getElementById('five_star_percentage').innerText = (five_star_gem_count / total_gem_count * 100).toFixed(2);
     }
 
     init();
