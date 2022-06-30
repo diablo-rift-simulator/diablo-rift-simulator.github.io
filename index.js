@@ -235,7 +235,7 @@
     };
 
     const randomIndex = (distribution) => {
-        const index = Math.floor(distribution.length * Math.random());  // random index
+        const index = Math.floor(distribution.length * Math.random());
         return distribution[index];
     };
 
@@ -247,7 +247,7 @@
     }
 
     function pickGem() {
-        const distribution = createDistribution(gem_types, gem_probabilities, 100);
+        const distribution = createDistribution(gem_types, gem_probabilities, 1000);
         let index = randomIndex(distribution);
 
         if (pity_system_active) {
