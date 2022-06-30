@@ -342,4 +342,5 @@ button {
 .modal-gem-info {
     height: auto;
     width: 100%;
+    border-radius: 25px;
 }
