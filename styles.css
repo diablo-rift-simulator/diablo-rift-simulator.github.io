@@ -140,6 +140,7 @@ body {
 .boxes {
     /* transform: translateY(0); */
     transition: transform 1s ease-in-out;
+    background-color: black;
 }
 
 .box {
