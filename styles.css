@@ -60,6 +60,13 @@ body {
     background-color: darkgray !important;
 }
 
+.modal-gem-info-content {
+    height: 50vh;
+    justify-content: center;
+    padding: 15%;
+    background-color: transparent !important;
+}
+
 .numbers {
     text-align: center !important;
 }
@@ -196,7 +203,7 @@ button {
     right: 0;
 }
 
-@media (min-width: 400px) { 
+@media (min-width: 400px) {
     .doors {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -227,7 +234,7 @@ button {
     .buttons img {
         width: 250px;
     }
-    
+
     .donate-btn {
         position: relative;
         bottom: unset;
@@ -235,7 +242,7 @@ button {
     }
 }
 
-@media (min-width: 660px) { 
+@media (min-width: 660px) {
     .door {
         width: 100px;
         height: 150px;
@@ -256,7 +263,7 @@ button {
     }
 }
 
-@media (min-width: 767px) { 
+@media (min-width: 767px) {
     .app-headline {
         font-size: 30px;
     }
@@ -278,7 +285,7 @@ button {
     }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
     .app-headline {
         font-size: 30px;
     }
@@ -332,3 +339,7 @@ button {
     }
 }
 
+.modal-gem-info {
+    height: auto;
+    width: 100%;
+}
