@@ -1,34 +1,23 @@
 (function () {
     "use strict";
 
-    let five_star_gem_count = 0;
+    let moneySpent = 0;
 
-    let money_spent = 0;
+    let pitySystemActive = false;
 
-    let pity_system_active = false;
+    let totalGemCount = 0;
 
-    let total_gem_count = 0;
+    let gemCount = {'1': 0.0, '2': 0.0, '2_5': 0.0, '3_5': 0.0, '4_5': 0.0, '5_5': 0.0,}
 
-    let gem_count = {
-        1: 0.0,
-        2: 0.0,
-        5: {
-            2: 0.0,
-            3: 0.0,
-            4: 0.0,
-            5: 0.0
-        }
-    }
+    const GEM_TYPES = [1, 2, 5];
 
-    const gem_types = [1, 2, 5];
+    const GEM_ODDS = [0.754, 0.201, 0.045];
 
-    const gem_probabilities = [0.754, 0.201, 0.045];
+    const FIVE_STAR_GEM_TYPES = [2, 3, 4, 5]
 
-    const five_star_gem_types = [2, 3, 4, 5]
+    const FIVE_STAR_ODDS = [0.75, 0.2, 0.04, 0.01];
 
-    const five_star_probabilities = [0.75, 0.2, 0.04, 0.01];
-
-    const one_star_gems = [
+    const ONE_STAR_GEMS = [
         'gem/trickshot_gem',
         'gem/everlasting_torment',
         'gem/the_black_rose',
@@ -47,7 +36,7 @@
         'gem/pain_of_subjugation',
     ];
 
-    const two_star_gems = [
+    const TWO_STAR_GEMS = [
         'gem/power_and_command',
         'gem/the_hunger',
         'gem/bloody_reach',
@@ -59,7 +48,7 @@
         'gem/unity_crystal',
     ];
 
-    const five_star_gems = [
+    const FIVE_STAR_GEMS = [
         'gem/bottled_hope',
         'gem/phoenix_ashes',
         'gem/bsj',
@@ -71,154 +60,151 @@
         'gem/blessing_of_the_worthy',
     ];
 
+    const $doors = document.querySelectorAll(".door");
 
-    if (window.matchMedia("(max-width: 1200px)").matches) {
-        var stats = $('#statsWrapper').html();
+    const $fiveStarCountMain = $('#five-star-count-main')
 
-        $('#statsModalContent').append(stats);
-        $('#statsWrapper').remove();
-    }
+    const $moneySpent = $('#money-spent');
+    const $gemInfoModal = $('#gem-info-modal');
 
-    const doors = document.querySelectorAll(".door");
-    document.querySelector("#spinner").addEventListener("click", spin);
-    document.querySelector("#auto_spin").addEventListener("click", autoSpin);
-
-    doors.forEach(item => {
-        item.addEventListener('click', event => {
+    $doors.forEach(($door) => {
+        $($door).on('click', event => {
             const $target = $(event.target);
-            const $element = $target.hasClass('door-container')
+            const $doorContainer = $target.hasClass('door-container')
                 ? $target
                 : $target.parents('.door-container');
 
-            const $boxes = $('.boxes', $element);
-            const $gemInfo = $('.gem-info', $element);
+            const $boxes = $('.boxes', $doorContainer);
+            const $gemInfo = $('.gem-info', $doorContainer);
             const selectedGem = $boxes.attr('selected-gem');
 
             if (selectedGem !== 'none') {
-                const $gemInfoModal = $('#gemInfoModal');
                 const $gemInfoModalContent = $gemInfo.clone();
                 $gemInfoModalContent.show();
                 let imageHtml = '<img src="' + 'assets/additional_info/' + $boxes.attr('selected-gem') + '.jpg' + '" class="modal-gem-info" style="display: block;" alt="">';
-                $('#gemInfoModalContent').html(imageHtml);
+                $('.gem-info-modal-content').html(imageHtml);
                 $gemInfoModal.modal('show');
             }
         })
     });
 
-    async function spin(event, timeoutDuration = 100) {
-        money_spent += 25;
+    async function spin() {
+        moneySpent += 25;
 
-        if (money_spent % 125 === 0) {
-            pity_system_active = true;
+        if (moneySpent % 125 === 0) {
+            pitySystemActive = true;
         }
 
-        document.getElementById('money_spent').innerText = money_spent;
-        init(false, 1, 2);
-        for (const door of doors) {
-            const boxes = door.querySelector(".boxes");
-            const duration = parseInt(boxes.style.transitionDuration);
-            boxes.style.transform = "translateY(0)";
-            await new Promise((resolve) => {
-                setTimeout(resolve, duration * timeoutDuration);
+        $moneySpent.text(moneySpent);
+        init(false);
+
+        await $doors.forEach(($door) => {
+            const $boxes = $('.boxes', $door);
+            const duration = parseInt($boxes.css('transitionDuration'));
+            $boxes.css('transform', "translateY(0)");
+            return new Promise((resolve) => {
+                setTimeout(resolve, duration * 100);
             });
-        }
-        for (const door of doors) {
+        });
+        for (const $door of $doors) {
             await new Promise((resolve) => {
-                setTimeout(resolve, timeoutDuration * 2);
-                door.parentElement.querySelector('#stars').style.display = 'grid';
+                setTimeout(resolve, 1);
+                $('#stars', $($door).parent()).css('display', 'grid');
             });
         }
     }
 
     async function autoSpin() {
-        let currentFiveStarAmount = five_star_gem_count;
-        while (five_star_gem_count === currentFiveStarAmount) {
-            await spin(null, 1)
+        let currentFiveStarAmount = gemCount['5_5'];
+        while (gemCount['5_5'] === currentFiveStarAmount) {
+            await spin();
         }
     }
 
-    function init(firstInit = true, groups = 1, duration = 1) {
-        for (const door of doors) {
-            if (firstInit) {
-                door.dataset.spinned = "0";
-            }
+    function init(firstInit = true) {
+        $doors.forEach(($door) => {
+            {
+                const $boxes = $door.querySelector(".boxes");
+                const $boxesClone = $boxes.cloneNode(false);
 
-            const boxes = door.querySelector(".boxes");
-            const boxesClone = boxes.cloneNode(false);
+                let pool = []
+                    .concat(ONE_STAR_GEMS, TWO_STAR_GEMS, FIVE_STAR_GEMS)
+                    .sort(() => 0.5 - Math.random());
 
-            let pool = []
-                .concat(one_star_gems, two_star_gems, five_star_gems)
-                .sort(() => 0.5 - Math.random());
-            pool.unshift('crest');
-            let gem = {};
-
-            boxesClone.setAttribute('selected-gem', 'none');
-
-            if (!firstInit) {
-                gem = pickGem();
-                calculateDropRate(gem);
-                pool.push(gem.name);
-
-                boxesClone.setAttribute('selected-gem', gem.name);
-                boxesClone.addEventListener(
-                    "transitionstart",
-                    function () {
-                        door.dataset.spinned = "1";
-                        this.querySelectorAll(".box").forEach((box) => {
-                            box.style.filter = "blur(1px)";
-                        });
-                    },
-                    {once: true}
-                );
-
-                boxesClone.addEventListener(
-                    "transitionend",
-                    function () {
-                        this.querySelectorAll(".box").forEach((box, index) => {
-                            box.style.filter = "blur(0)";
-                            if (index > 0) this.removeChild(box);
-                        });
-                    },
-                    {once: true}
-                );
-            }
-
-            for (let i = pool.length - 1; i >= 0; i--) {
-                const box = document.createElement("div");
-                box.classList.add("box");
-                box.style.width = door.clientWidth + "px";
-                box.style.height = door.clientHeight + "px";
-                box.innerHTML = '<img src="assets/' + pool[i] + '.webp' + '" alt=""/>';
-                boxesClone.appendChild(box);
-            }
-
-            boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
-            boxesClone.style.transform = `translateY(-${
-                door.clientHeight * (pool.length - 1)
-            }px)`;
-            door.replaceChild(boxesClone, boxes);
-
-            if (!firstInit) {
-                let stars = door.parentElement.querySelector('#stars');
-                if (stars === null) {
-                    stars = document.createElement("div");
-                } else {
-                    door.parentElement.removeChild(stars);
+                if (firstInit) {
+                    pool.unshift('crest');
                 }
-                stars = document.createElement("div");
-                stars.style.position = 'absolute';
-                stars.style.display = 'none';
-                stars.id = 'stars';
 
-                let starsHtml = '<i class="fa-solid fa-star yellow-star"></i>'.repeat(gem.rank);
-                if (gem.fiveStarGem) {
-                    starsHtml += '<i class="fa-solid fa-star"></i>'.repeat(5 - gem.rank)
+                let gem = {};
+
+                $boxesClone.setAttribute('selected-gem', 'none');
+
+                if (!firstInit) {
+                    gem = pickGem();
+                    calculateDropRate(gem);
+                    pool.push(gem.name);
+
+                    $boxesClone.setAttribute('selected-gem', gem.name);
+                    $boxesClone.addEventListener(
+                        "transitionstart",
+                        function () {
+                            this.querySelectorAll(".box").forEach(($box) => {
+                                $box.style.filter = "blur(1px)";
+                            });
+                        },
+                        {once: true}
+                    );
+
+                    $boxesClone.addEventListener(
+                        "transitionend",
+                        function () {
+                            this.querySelectorAll(".box").forEach(($box, index) => {
+                                $box.style.filter = "blur(0)";
+                                if (index > 0) {
+                                    this.removeChild($box);
+                                }
+                            });
+                        },
+                        {once: true}
+                    );
                 }
-                stars.innerHTML = starsHtml;
 
-                door.parentElement.appendChild(stars)
+                for (let i = pool.length - 1; i >= 0; i--) {
+                    const $box = document.createElement("div");
+                    $box.classList.add("box");
+                    $box.style.width = $door.clientWidth + "px";
+                    $box.style.height = $door.clientHeight + "px";
+                    $box.innerHTML = '<img src="assets/' + pool[i] + '.webp' + '" alt=""/>';
+                    $boxesClone.appendChild($box);
+                }
+
+                $boxesClone.style.transitionDuration = '1s';
+                $boxesClone.style.transform = `translateY(-${
+                    $door.clientHeight * (pool.length - 1)
+                }px)`;
+
+                $door.replaceChild($boxesClone, $boxes);
+
+                if (!firstInit) {
+                    let $stars = $door.parentElement.querySelector('#stars');
+                    if ($stars !== null) {
+                        $door.parentElement.removeChild($stars);
+                    }
+                    $stars = document.createElement("div");
+                    $stars.style.position = 'absolute';
+                    $stars.style.display = 'none';
+                    $stars.id = 'stars';
+
+                    let starsHtml = '<i class="fa-solid fa-star yellow-star"></i>'.repeat(gem.rank);
+                    if (gem.fiveStarGem) {
+                        starsHtml += '<i class="fa-solid fa-star"></i>'.repeat(5 - gem.rank)
+                    }
+                    $stars.innerHTML = starsHtml;
+
+                    $door.parentElement.appendChild($stars)
+                }
             }
-        }
+        })
     }
 
     const createDistribution = (array, weights, size) => {
@@ -240,33 +226,33 @@
     };
 
     function determineGemRank() {
-        const distribution = createDistribution(five_star_gem_types, five_star_probabilities, 100);
+        const distribution = createDistribution(FIVE_STAR_GEM_TYPES, FIVE_STAR_ODDS, 100);
         const index = randomIndex(distribution);
 
-        return five_star_gem_types[index];
+        return FIVE_STAR_GEM_TYPES[index];
     }
 
     function pickGem() {
-        const distribution = createDistribution(gem_types, gem_probabilities, 1000);
+        const distribution = createDistribution(GEM_TYPES, GEM_ODDS, 1000);
         let index = randomIndex(distribution);
 
-        if (pity_system_active) {
+        if (pitySystemActive) {
             index = 2;
-            pity_system_active = false;
+            pitySystemActive = false;
         }
 
-        switch (gem_types[index]) {
+        switch (GEM_TYPES[index]) {
             case 1:
-                document.getElementById('one_star_count').innerText = ++gem_count["1"];
+                $('#one-star-count').text(++gemCount["1"]);
                 return {
-                    name: one_star_gems[Math.floor(Math.random() * one_star_gems.length)],
+                    name: ONE_STAR_GEMS[Math.floor(Math.random() * ONE_STAR_GEMS.length)],
                     rank: 1,
                     fiveStarGem: false
                 };
             case 2:
-                document.getElementById('two_star_count').innerText = ++gem_count["2"];
+                $('#two-star-count').text(++gemCount["2"]);
                 return {
-                    name: two_star_gems[Math.floor(Math.random() * two_star_gems.length)],
+                    name: TWO_STAR_GEMS[Math.floor(Math.random() * TWO_STAR_GEMS.length)],
                     rank: 2,
                     fiveStarGem: false
                 };
@@ -275,21 +261,21 @@
 
                 switch (gemRank) {
                     case 2:
-                        document.getElementById('two_of_five_star_count').innerText = ++gem_count["5"]["2"];
+                        $('#two-of-five-star-count').text(++gemCount['2_5']);
                         break;
                     case 3:
-                        document.getElementById('three_star_count').innerText = ++gem_count["5"]["3"];
+                        $('#three-star-count').text(++gemCount['3_5']);
                         break;
                     case 4:
-                        document.getElementById('four_star_count').innerText = ++gem_count["5"]["4"];
+                        $('#four-star-count').text(++gemCount['4_5']);
                         break;
                     case 5:
-                        document.getElementById('five_star_count').innerText = ++five_star_gem_count;
-                        document.getElementById('five_start_gems_amount').innerText = five_star_gem_count;
+                        $('#five-star-count').text(++gemCount['5_5']);
+                        $fiveStarCountMain.text(gemCount['5_5']);
                 }
 
                 return {
-                    name: five_star_gems[Math.floor(Math.random() * five_star_gems.length)],
+                    name: FIVE_STAR_GEMS[Math.floor(Math.random() * FIVE_STAR_GEMS.length)],
                     rank: gemRank,
                     fiveStarGem: true
                 };
@@ -297,14 +283,48 @@
     }
 
     function calculateDropRate() {
-        document.getElementById('total_gem_count').innerText = ++total_gem_count;
-        document.getElementById('one_star_percentage').innerText = (gem_count["1"] / total_gem_count * 100).toFixed(2);
-        document.getElementById('two_star_percentage').innerText = (gem_count["2"] / total_gem_count * 100).toFixed(2);
-        document.getElementById('two_of_five_star_percentage').innerText = (gem_count["5"]["2"] / total_gem_count * 100).toFixed(2);
-        document.getElementById('three_star_percentage').innerText = (gem_count["5"]["3"] / total_gem_count * 100).toFixed(2);
-        document.getElementById('four_star_percentage').innerText = (gem_count["5"]["4"] / total_gem_count * 100).toFixed(2);
-        document.getElementById('five_star_percentage').innerText = (five_star_gem_count / total_gem_count * 100).toFixed(2);
+        $('#total-gem-count').text(++totalGemCount);
+        $('#one-star-percentage').text(calculatePercentage(gemCount['1']));
+        $('#two-star-percentage').text(calculatePercentage(gemCount['2']));
+        $('#two-of-five-star-percentage').text(calculatePercentage(gemCount['2_5']));
+        $('#three-star-percentage').text(calculatePercentage(gemCount['3_5']));
+        $('#four-star-percentage').text(calculatePercentage(gemCount['4_5']));
+        $('#five-star-percentage').text(calculatePercentage(gemCount['5_5']));
     }
+
+    function calculatePercentage(gemCount) {
+        return (gemCount / totalGemCount * 100).toFixed(2)
+    }
+
+    function buttonPressed(event) {
+        $(event.target).addClass('button-pressed');
+    }
+
+    function buttonReleased(event) {
+        $(event.target).removeClass('button-pressed');
+    }
+
+    if (window.matchMedia("(max-width: 1200px)").matches) {
+        const $statsWrapper = $('#stats-wrapper');
+        $('#stats-modal-content').append($statsWrapper.html());
+        $statsWrapper.remove();
+    }
+
+    $("#spin")
+        .on('click', spin)
+        .on('mousedown', buttonPressed)
+        .on('mouseup', buttonReleased)
+        .on('touchstart', buttonPressed);
+
+    $("#auto-spin")
+        .on('click', autoSpin)
+        .on('mousedown', buttonPressed)
+        .on('mouseup', buttonReleased)
+        .on('touchstart', buttonPressed);
+
+    $("#paypal-button")
+        .on('mousedown', buttonPressed)
+        .on('mouseup', buttonReleased);
 
     init();
 })();

@@ -57,10 +57,11 @@ body {
     text-align: left;
     justify-content: center;
     padding: 15%;
+    opacity: 0.97;
     background-color: darkgray !important;
 }
 
-.modal-gem-info-content {
+.gem-info-modal-content {
     height: 50vh;
     justify-content: center;
     padding: 15%;
@@ -193,8 +194,13 @@ button {
     -moz-transform: scale(0.5); /* Firefox */
 }
 
-#spinner {
+#spin  {
     margin-right: 10px;
+    cursor: pointer;
+}
+
+#auto-spin {
+    cursor: pointer;
 }
 
 .donate-btn {
@@ -226,7 +232,7 @@ button {
         height: auto;
     }
 
-    #spinner {
+    #spin {
         margin-right: 0;
         margin-bottom: 10px;
     }
@@ -280,8 +286,8 @@ button {
         margin-top: 40px;
     }
 
-    #spinner {
-        margin-bottom: 0px;
+    #spin {
+        margin-bottom: 0;
     }
 }
 
@@ -308,7 +314,7 @@ button {
         font-size: 40px;
     }
 
-    #spinner {
+    #spin {
         margin-bottom: 0;
     }
 
@@ -343,4 +349,8 @@ button {
     height: auto;
     width: 100%;
     border-radius: 25px;
+}
+
+.button-pressed {
+    transform: translateY(4px);
 }
