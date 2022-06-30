@@ -83,6 +83,28 @@
     document.querySelector("#spinner").addEventListener("click", spin);
     document.querySelector("#auto_spin").addEventListener("click", autoSpin);
 
+    doors.forEach(item => {
+        item.addEventListener('click', event => {
+            const $target = $(event.target);
+            const $element = $target.hasClass('door-container')
+                ? $target
+                : $target.parents('.door-container');
+
+            const $boxes = $('.boxes', $element);
+            const $gemInfo = $('.gem-info', $element);
+            const selectedGem = $boxes.attr('selected-gem');
+
+            if (selectedGem !== 'none') {
+                const $gemInfoModal = $('#gemInfoModal');
+                const $gemInfoModalContent = $gemInfo.clone();
+                $gemInfoModalContent.show();
+                let imageHtml = '<img src="' + 'assets/additional_info/' + $boxes.attr('selected-gem') + '.jpg' + '" class="modal-gem-info" style="display: block;" alt="">';
+                $('#gemInfoModalContent').html(imageHtml);
+                $gemInfoModal.modal('show');
+            }
+        })
+    });
+
     async function spin(event, timeoutDuration = 100) {
         money_spent += 25;
 
@@ -130,10 +152,14 @@
             pool.unshift('crest');
             let gem = {};
 
+            boxesClone.setAttribute('selected-gem', 'none');
+
             if (!firstInit) {
                 gem = pickGem();
                 calculateDropRate(gem);
                 pool.push(gem.name);
+
+                boxesClone.setAttribute('selected-gem', gem.name);
                 boxesClone.addEventListener(
                     "transitionstart",
                     function () {
