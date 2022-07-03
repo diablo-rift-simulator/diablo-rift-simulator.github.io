@@ -22,7 +22,6 @@
         'gem/everlasting_torment',
         'gem/the_black_rose',
         'gem/seleds_weakening',
-        'gem/everlasting_torment',
         'gem/chained_death',
         'gem/berserkers_eye',
         'gem/mocking_laughter',
