@@ -32,7 +32,6 @@
         'gem/freedom_and_devotion',
         'gem/nightmare_wreath',
         'gem/respite_stone',
-        'gem/seleds_weakening',
         'gem/pain_of_subjugation',
     ];
 
