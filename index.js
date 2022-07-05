@@ -9,16 +9,14 @@
 
     let gemPower = 0;
 
-    let selectedGems = [
-        'gem/trickshot_gem'
-    ];
+    let selectedGems = [];
 
     let gemInfo = {
         1: {
             'gem/trickshot_gem': {
                 name: 'Trickshot Gem',
                 rank: {
-                    1: 1,
+                    1: 0,
                     2: 0,
                     3: 0,
                     4: 0,
@@ -537,18 +535,17 @@
             case 1: {
                 switch (currentRank) {
                     case 1:
-                        if (gemPower >= 1 && gemInfo[name]['rank'][1] > 0) {
+                        if (gemPower >= 1 && gemInfo[1][name]['rank'][1] > 0) {
                             autoFillGemPower(1);
-                            updateGemInfoGemRank($target, name, currentRank);
+                            updateGemInfoGemRank($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(5);
                         }
                         break;
                     case 2:
-                        console.log(3);
                         if (gemPower >= 5) {
                             autoFillGemPower(5);
-                            updateGemInfoGemRank($target, name, currentRank);
+                            updateGemInfoGemRank($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(10);
                         }
@@ -556,7 +553,7 @@
                     case 3:
                         if (gemPower >= 10) {
                             autoFillGemPower(10);
-                            updateGemInfoGemRank($target, name, currentRank);
+                            updateGemInfoGemRank($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(15);
                         }
@@ -564,7 +561,7 @@
                     case 4:
                         if (gemPower >= 15) {
                             autoFillGemPower(15);
-                            updateGemInfoGemRank($target, name, currentRank);
+                            updateGemInfoGemRank($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(20);
                         }
@@ -572,39 +569,39 @@
                     case 5:
                         if (gemPower >= 20) {
                             autoFillGemPower(20);
-                            updateGemInfoGemRank($target, name, currentRank);
+                            updateGemInfoGemRank($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(25);
                         }
                         break;
                     case 6:
-                        if (gemPower >= 25 && gemInfo[name].rank[1] > 0) {
+                        if (gemPower >= 25 && gemInfo[1][name]['rank'][1] > 0) {
                             autoFillGemPower(25);
-                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(30);
                         }
                         break;
                     case 7:
-                        if (gemPower >= 30 && gemInfo[name].rank[1] > 0) {
+                        if (gemPower >= 30 && gemInfo[1][name]['rank'][1] > 0) {
                             autoFillGemPower(30);
-                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(40);
                         }
                         break;
                     case 8:
-                        if (gemPower >= 40 && gemInfo[name].rank[1] > 0) {
+                        if (gemPower >= 40 && gemInfo[1][name]['rank'][1] > 0) {
                             autoFillGemPower(40);
-                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank, stars);
                             currentRank++;
                             $gemPowerForUpgrade.text(50);
                         }
                         break;
                     case 9:
-                        if (gemPower >= 50 && gemInfo[name].rank[1] > 0) {
+                        if (gemPower >= 50 && gemInfo[1][name]['rank'][1] > 0) {
                             autoFillGemPower(1);
-                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank, stars);
                             currentRank++;
                             $('.gem-upgrade-requirements', $target).hide();
                             $('.upgrade-gem-btn', $target).hide();
@@ -621,17 +618,17 @@
         $gemPower.text(gemPower);
     }
 
-    function upgradeOneStarGemUsingDuplicate($target, name, currentRank) {
-        updateGemInfoGemRank($target, name, currentRank);
-        gemInfo[name].rank[1]--;
+    function upgradeOneStarGemUsingDuplicate($target, name, currentRank, stars) {
+        updateGemInfoGemRank($target, name, currentRank, stars);
+        gemInfo[stars][name].rank[1]--;
         $gemPower.text(--gemPower);
 
     }
 
-    function updateGemInfoGemRank($target, name, rank) {
-        gemInfo[name].rank[rank + 1]++;
-        if (gemInfo[name].rank[rank] > 0) {
-            gemInfo[name].rank[rank]--;
+    function updateGemInfoGemRank($target, name, rank, stars) {
+        gemInfo[stars][name].rank[rank + 1]++;
+        if (gemInfo[stars][name].rank[rank] > 0) {
+            gemInfo[stars][name].rank[rank]--;
         }
         $gemRank.text(rank + 1);
         $('.gem-rank', $target).text(rank + 1);
@@ -664,14 +661,17 @@
     function onGemSelect(event) {
         const $target = $(event.target);
         const $parent = $($target.parent());
+        const selectedGem = $target.val();
         $target.css('background-image', 'none')
-        $('.gem-icon', $parent).attr('src', 'assets/' + $target.val() + '.webp')
+        $('.gem-icon', $parent).attr('src', 'assets/' + selectedGem + '.webp')
         $('.gem-upgrade-wrapper', $parent).show();
         $target.attr('disabled', 'disabled');
         $('.star-rating-select', $parent).remove();
-        if (ONE_STAR_GEMS.includes($target.val())) {
+        if (ONE_STAR_GEMS.includes(selectedGem)) {
             $resonance.text(resonance += 15);
+            autoFillGemPower(1);
         }
+        selectedGems.push(selectedGem);
     }
 
     function gemOfStarRatingExist(starRating) {
@@ -711,6 +711,10 @@
     function createGemSelectOptions(starRating) {
         let optionsHtml = '';
         for (const gem in gemInfo[starRating]) {
+            if (selectedGems.includes(gem)) {
+                continue;
+            }
+
             if (Object.values(gemInfo[starRating][gem].rank).reduce((a, b) => a + b) > 0) {
                 optionsHtml += '<option value="' + gem + '">' + gemInfo[starRating][gem].name + '</option>'
             }
