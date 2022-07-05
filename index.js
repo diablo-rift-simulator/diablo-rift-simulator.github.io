@@ -525,7 +525,6 @@
     }
 
     function upgradeGem($target, name, stars, currentRank) {
-        console.log($target, name, stars, currentRank);
         if (currentRank > 9) {
             return;
         }
@@ -535,7 +534,6 @@
             case 1: {
                 switch (currentRank) {
                     case 1:
-                        console.log(gemInfo[1][name]);
                         if (gemPower >= 1 && gemInfo[1][name]['rank'][1] > 0) {
                             autoFillGemPower(1);
                             updateGemInfoGemRank($target, name, currentRank, stars);
