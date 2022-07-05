@@ -240,7 +240,6 @@
 
     const ONE_STAR_GEMS = [
         'gem/trickshot_gem',
-        'gem/everlasting_torment',
         'gem/the_black_rose',
         'gem/everlasting_torment',
         'gem/chained_death',
@@ -526,6 +525,7 @@
     }
 
     function upgradeGem($target, name, stars, currentRank) {
+        console.log($target, name, stars, currentRank);
         if (currentRank > 9) {
             return;
         }
@@ -535,6 +535,7 @@
             case 1: {
                 switch (currentRank) {
                     case 1:
+                        console.log(gemInfo[1][name]);
                         if (gemPower >= 1 && gemInfo[1][name]['rank'][1] > 0) {
                             autoFillGemPower(1);
                             updateGemInfoGemRank($target, name, currentRank, stars);
@@ -666,21 +667,22 @@
         $('.gem-icon', $parent).attr('src', 'assets/' + selectedGem + '.webp')
         $('.gem-upgrade-wrapper', $parent).show();
         $target.attr('disabled', 'disabled');
+
+        $('.upgrade-gem-btn', $parent).attr('data-gem-name', selectedGem);
+        $('.upgrade-gem-btn', $parent).attr('data-gem-stars', $('.star-rating-select', $parent).val());
+
         $('.star-rating-select', $parent).remove();
         if (ONE_STAR_GEMS.includes(selectedGem)) {
             $resonance.text(resonance += 15);
-            autoFillGemPower(1);
+            if (gemPower > 0) {
+                autoFillGemPower(1);
+            }
         }
         selectedGems.push(selectedGem);
     }
 
     function gemOfStarRatingExist(starRating) {
-        for (const gem in gemInfo[starRating]) {
-            if (Object.values(gemInfo[starRating][gem].rank).reduce((a, b) => a + b) > 0) {
-                return true;
-            }
-        }
-        return false;
+        return gemCount[starRating] > 0;
     }
 
     function createStarRatingSelectOptions() {
@@ -723,6 +725,10 @@
         optionsHtml = '<option selected>Select a Legendary Gem</option>' + optionsHtml;
 
         return optionsHtml;
+    }
+
+    function checkRequirements() {
+
     }
 
     if (window.matchMedia("(max-width: 1200px)").matches) {
