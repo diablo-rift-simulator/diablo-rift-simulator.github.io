@@ -5,6 +5,213 @@
 
     let pitySystemActive = false;
 
+    let resonance = 0;
+
+    let gemPower = 0;
+
+    let selectedGems = [
+        'gem/trickshot_gem'
+    ];
+
+    let gemInfo = {
+        'gem/trickshot_gem': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/everlasting_torment': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/the_black_rose': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/chained_death': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/berserkers_eye': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/mocking_laughter': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/zod_stone': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/caarsens_invigoration': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/defiant_soul': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/freedom_and_devotion': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/respite_stone': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/seleds_weakening': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/pain_of_subjugation': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+        'gem/nightmare_wreath': {
+            rank: {
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        },
+    };
+
     let totalGemCount = 0;
 
     let gemCount = {'1': 0.0, '2': 0.0, '2_5': 0.0, '3_5': 0.0, '4_5': 0.0, '5_5': 0.0,}
@@ -21,7 +228,6 @@
         'gem/trickshot_gem',
         'gem/everlasting_torment',
         'gem/the_black_rose',
-        'gem/seleds_weakening',
         'gem/everlasting_torment',
         'gem/chained_death',
         'gem/berserkers_eye',
@@ -65,6 +271,9 @@
     const $fiveStarCountMain = $('#five-star-count-main')
 
     const $moneySpent = $('#money-spent');
+    const $resonance = $('#resonance');
+    const $gemPower = $('.gem-power');
+    const $gemRank = $('#gem-rank');
     const $gemInfoModal = $('#gem-info-modal');
 
     $doors.forEach(($door) => {
@@ -244,19 +453,25 @@
         switch (GEM_TYPES[index]) {
             case 1:
                 $('#one-star-count').text(++gemCount["1"]);
+                let gemName = ONE_STAR_GEMS[Math.floor(Math.random() * ONE_STAR_GEMS.length)];
+                gemInfo[gemName]['rank'][1]++;
+                $gemPower.text(gemPower += 1);
+
                 return {
-                    name: ONE_STAR_GEMS[Math.floor(Math.random() * ONE_STAR_GEMS.length)],
+                    name: gemName,
                     rank: 1,
                     fiveStarGem: false
                 };
             case 2:
                 $('#two-star-count').text(++gemCount["2"]);
+                $gemPower.text(gemPower += 4);
                 return {
                     name: TWO_STAR_GEMS[Math.floor(Math.random() * TWO_STAR_GEMS.length)],
                     rank: 2,
                     fiveStarGem: false
                 };
             case 5:
+                $gemPower.text(gemPower += 32);
                 const gemRank = determineGemRank();
 
                 switch (gemRank) {
@@ -296,12 +511,150 @@
         return (gemCount / totalGemCount * 100).toFixed(2)
     }
 
+    function upgradeGem($target, name, stars, currentRank) {
+        if (currentRank > 9) {
+            return;
+        }
+
+        const $gemPowerForUpgrade = $('.gem-power-for-upgrade', $target);
+        switch (stars) {
+            case 1: {
+                switch (currentRank) {
+                    case 1:
+                        if (gemPower >= 1 && gemInfo[name]['rank'][1] > 0) {
+                            autoFillGemPower(1);
+                            updateGemInfoGemRank($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(5);
+                        }
+                        break;
+                    case 2:
+                        console.log(3);
+                        if (gemPower >= 5) {
+                            autoFillGemPower(5);
+                            updateGemInfoGemRank($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(10);
+                        }
+                        break;
+                    case 3:
+                        if (gemPower >= 10) {
+                            autoFillGemPower(10);
+                            updateGemInfoGemRank($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(15);
+                        }
+                        break;
+                    case 4:
+                        if (gemPower >= 15) {
+                            autoFillGemPower(15);
+                            updateGemInfoGemRank($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(20);
+                        }
+                        break;
+                    case 5:
+                        if (gemPower >= 20) {
+                            autoFillGemPower(20);
+                            updateGemInfoGemRank($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(25);
+                        }
+                        break;
+                    case 6:
+                        if (gemPower >= 25 && gemInfo[name].rank[1] > 0) {
+                            autoFillGemPower(25);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(30);
+                        }
+                        break;
+                    case 7:
+                        if (gemPower >= 30 && gemInfo[name].rank[1] > 0) {
+                            autoFillGemPower(30);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(40);
+                        }
+                        break;
+                    case 8:
+                        if (gemPower >= 40 && gemInfo[name].rank[1] > 0) {
+                            autoFillGemPower(40);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            currentRank++;
+                            $gemPowerForUpgrade.text(50);
+                        }
+                        break;
+                    case 9:
+                        if (gemPower >= 50 && gemInfo[name].rank[1] > 0) {
+                            autoFillGemPower(1);
+                            upgradeOneStarGemUsingDuplicate($target, name, currentRank);
+                            currentRank++;
+                            $('.gem-upgrade-requirements', $target).hide();
+                            $('.upgrade-gem-btn', $target).hide();
+                        }
+                }
+            }
+        }
+
+        return currentRank;
+    }
+
+    function autoFillGemPower(gemPowerToSubtract) {
+        gemPower -= gemPowerToSubtract;
+        $gemPower.text(gemPower);
+    }
+
+    function upgradeOneStarGemUsingDuplicate($target, name, currentRank) {
+        updateGemInfoGemRank($target, name, currentRank);
+        gemInfo[name].rank[1]--;
+        $gemPower.text(--gemPower);
+
+    }
+
+    function updateGemInfoGemRank($target, name, rank) {
+        gemInfo[name].rank[rank + 1]++;
+        if (gemInfo[name].rank[rank] > 0) {
+            gemInfo[name].rank[rank]--;
+        }
+        $gemRank.text(rank + 1);
+        $('.gem-rank', $target).text(rank + 1);
+    }
+
     function buttonPressed(event) {
         $(event.target).addClass('button-pressed');
     }
 
     function buttonReleased(event) {
         $(event.target).removeClass('button-pressed');
+    }
+
+    function onUpgrade(event) {
+        const $target = $(event.target);
+        const originalRank = parseInt($target.attr('data-gem-rank'));
+        const currentRank = upgradeGem(
+            $($target.parent().parent()),
+            $target.attr('data-gem-name'),
+            parseInt($target.attr('data-gem-stars')),
+            originalRank
+        );
+        $target.attr('data-gem-rank', currentRank);
+
+        if (currentRank > originalRank) {
+            $resonance.text(resonance+=15);
+        }
+    }
+
+    function onGemSelect(event) {
+        const $target = $(event.target);
+        const $parent = $($target.parent());
+        $target.css('background-image', 'none')
+        $('.gem-icon', $parent).attr('src', 'assets/' + $target.val() + '.webp')
+        $('.gem-upgrade-wrapper', $parent).show();
+        $target.attr('disabled', 'disabled');
+        if (ONE_STAR_GEMS.includes($target.val())) {
+            $resonance.text(resonance += 15);
+        }
     }
 
     if (window.matchMedia("(max-width: 1200px)").matches) {
@@ -322,9 +675,27 @@
         .on('mouseup', buttonReleased)
         .on('touchstart', buttonPressed);
 
+    $(".img-tab")
+        .on('mousedown', buttonPressed)
+        .on('mouseup', buttonReleased)
+        .on('touchstart', buttonPressed);
+
     $("#paypal-button")
         .on('mousedown', buttonPressed)
         .on('mouseup', buttonReleased);
+
+    $('.upgrade-gem-btn')
+        .on('click', onUpgrade)
+        .on('mousedown', buttonPressed)
+        .on('mouseup', buttonReleased)
+        .on('touchstart', buttonPressed);
+
+    $('.gem-select').on('change', onGemSelect)
+
+    $('img[data-bs-toggle="tab"]').on('shown.bs.tab', function (event) {
+        $('.img-tab').css('filter', 'brightness(100%)')
+        $(event.target).css('filter', 'brightness(200%)');
+    });
 
     init();
 })();

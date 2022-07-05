@@ -170,6 +170,408 @@
     <div class="buttons">
         <img src="assets/button/spin_with_extra_value.png" id="spin" style="cursor: pointer" alt="spin">
         <img src="assets/button/auto_spin.png" id="auto-spin" style="cursor: pointer" alt="auto-spin">
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-keyboard="false"
+                data-bs-target="#gem-upgrade-modal">
+            <i class="fas fa-bars fa-2x ham-icon"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" style="color: black" id="gem-upgrade-modal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content gem-upgrade-modal-content">
+                    <div class="modal-header border-0">
+                        <h5>Resonance: <span id="resonance">0</span></h5><br>
+                        <h5>Gem power: <span class="gem-power">0</span></h5>
+                    </div>
+                    <div class="modal-body modal-upgrade-body">
+                        <div class="row nav nav-tabs border-0" role="tablist">
+                            <div role="presentation" class="col">
+                                <img src="assets/gem_upgrade/tab/tab1.jpg"
+                                     class="img-tab"
+                                     href="#first-gem"
+                                     aria-controls="first-gem"
+                                     role="tab"
+                                     data-bs-toggle="tab" alt=""/>
+                            </div>
+                            <div role="presentation" class="col">
+                                <img src="assets/gem_upgrade/tab/tab2.jpg"
+                                     class="img-tab"
+                                     href="#second-gem"
+                                     aria-controls="second-gem"
+                                     role="tab"
+                                     data-bs-toggle="tab" alt=""/>
+                            </div>
+                            <div role="presentation" class="col">
+                                <img src="assets/gem_upgrade/tab/tab3.jpg"
+                                     class="img-tab"
+                                     href="#third-gem"
+                                     aria-controls="third-gem"
+                                     role="tab"
+                                     data-bs-toggle="tab" alt=""/>
+                            </div>
+                            <div role="presentation" class="col">
+                                <img src="assets/gem_upgrade/tab/tab4.jpg"
+                                     class="img-tab"
+                                     href="#fourth-gem"
+                                     aria-controls="fourth-gem"
+                                     role="tab"
+                                     data-bs-toggle="tab" alt=""/>
+                            </div>
+                            <div role="presentation" class="col">
+                                <img src="assets/gem_upgrade/tab/tab5.jpg"
+                                     class="img-tab"
+                                     href="#fifth-gem"
+                                     aria-controls="fifth-gem"
+                                     role="tab"
+                                     data-bs-toggle="tab" alt=""/>
+                            </div>
+                            <div role="presentation" class="col">
+                                <img src="assets/gem_upgrade/tab/tab6.jpg"
+                                     class="img-tab"
+                                     href="#sixth-gem"
+                                     aria-controls="sixth-gem"
+                                     role="tab"
+                                     data-bs-toggle="tab" alt=""/>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane" id="first-gem">
+                                <div class="col" data-gem-name="berserkers_eye" data-gem-rank="1">
+                                    <select class="form-select form-select-lg mb-3 text-center gem-select"
+                                            aria-label=".form-select-lg example" style="margin-top: 15px">
+                                        <option selected>Select a Legendary Gem</option>
+                                        <option value="gem/trickshot_gem">Trickshot Gem</option>
+                                        <option value="gem/the_black_rose">The Black Rose</option>
+                                        <option value="gem/seleds_weakening">Seled's Weakening</option>
+                                        <option value="gem/everlasting_torment">Everlasting Torment</option>
+                                        <option value="gem/chained_death">Chained Death</option>
+                                        <option value="gem/berserkers_eye">Berserker's Eye</option>
+                                        <option value="gem/mocking_laughter">Mocking Laughter</option>
+                                        <option value="gem/zod_stone">Zod Stone</option>
+                                        <option value="gem/caarsens_invigoration">Caarsen's Invigoration
+                                        </option>
+                                        <option value="gem/defiant_soul">Defiant soul</option>
+                                        <option value="gem/freedom_and_devotion">Freedom and Devotion</option>
+                                        <option value="gem/nightmare_wreath">Nightmare Wreath</option>
+                                        <option value="gem/respite_stone">Respite Stone</option>
+                                        <option value="gem/pain_of_subjugation">Pain of Subjugation</option>
+                                    </select>
+                                    <div class="gem-upgrade-wrapper" style="display: none;">
+                                        <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                        <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                            <div class="col-stars text-center"
+                                                 style="padding-left: 0 !important; margin-bottom: 10px !important; margin-top: 10px !important;">
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center" style="font-size: 20px;">
+                                            <h5>Rank <span class="gem-rank">1</span></h5>
+                                        </div>
+                                        <div style="font-size: 20px; margin-bottom: 10px"
+                                             class="text-center gem-upgrade-requirements">
+                                            Requirements: <br>
+                                            <span class="gem-power">0</span>/<span
+                                                class="gem-power-for-upgrade">1</span> Gem power <br>
+                                            <div class="duplicates-wrapper">0/<span
+                                                    class="rank-one-duplicated-for-upgrade">1</span> Rank 1 duplicates
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <img
+                                                    src="assets/button/upgrade.png"
+                                                    data-gem-name="gem/zod_stone"
+                                                    data-gem-stars="1"
+                                                    data-gem-rank="1"
+                                                    class="upgrade-gem-btn" style="max-width: 100%;"
+                                                    alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="second-gem">
+                                <div class="col" data-gem-name="berserkers_eye" data-gem-rank="1">
+                                    <select class="form-select form-select-lg mb-3 text-center gem-select"
+                                            aria-label=".form-select-lg example" style="margin-top: 15px">
+                                        <option selected>Select Star Rating</option>
+                                        <option value="1">1 Star</option>
+                                        <option value="2">2 Star</option>
+                                        <option value="2_5">2/5 Star</option>
+                                        <option value="3_5">3/5 Star</option>
+                                        <option value="4_5">4/5 Star</option>
+                                        <option value="5_5">5/5 Star</option>
+                                    </select>
+                                    <select class="form-select form-select-lg mb-3 text-center gem-select"
+                                            aria-label=".form-select-lg example" style="margin-top: 15px">
+                                        <option selected>Select a Legendary Gem</option>
+                                        <option value="gem/trickshot_gem">Trickshot Gem</option>
+                                        <option value="gem/the_black_rose">The Black Rose</option>
+                                        <option value="gem/seleds_weakening">Seled's Weakening</option>
+                                        <option value="gem/everlasting_torment">Everlasting Torment</option>
+                                        <option value="gem/chained_death">Chained Death</option>
+                                        <option value="gem/berserkers_eye">Berserker's Eye</option>
+                                        <option value="gem/mocking_laughter">Mocking Laughter</option>
+                                        <option value="gem/zod_stone">Zod Stone</option>
+                                        <option value="gem/caarsens_invigoration">Caarsen's Invigoration
+                                        </option>
+                                        <option value="gem/defiant_soul">Defiant soul</option>
+                                        <option value="gem/freedom_and_devotion">Freedom and Devotion</option>
+                                        <option value="gem/nightmare_wreath">Nightmare Wreath</option>
+                                        <option value="gem/respite_stone">Respite Stone</option>
+                                        <option value="gem/pain_of_subjugation">Pain of Subjugation</option>
+                                    </select>
+                                    <div class="gem-upgrade-wrapper" style="display: none;">
+                                        <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                        <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                            <div class="col-stars text-center" style="padding-left: 0 !important;">
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center" style="font-size: 20px;">
+                                            <h5>Rank <span class="gem-rank">1</span></h5>
+                                        </div>
+                                        <div style="font-size: 20px; margin-bottom: 10px" class="text-center">
+                                            <b>Requirements</b>: <br>
+                                            0/15 Gem power <br>
+                                            0/1 Rank 1 duplicates
+                                        </div>
+                                        <div class="row">
+                                            <img
+                                                    src="assets/button/upgrade.png"
+                                                    data-gem-name="gem/zod_stone"
+                                                    data-gem-stars="1"
+                                                    data-gem-rank="1"
+                                                    class="upgrade-gem-btn" style="max-width: 100%;"
+                                                    alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="third-gem">
+                                <div class="col" data-gem-name="berserkers_eye" data-gem-rank="1">
+                                    <select class="form-select form-select-lg mb-3 text-center gem-select"
+                                            aria-label=".form-select-lg example" style="margin-top: 15px">
+                                        <option selected>Select a Legendary Gem</option>
+                                        <option value="gem/trickshot_gem">Trickshot Gem</option>
+                                        <option value="gem/the_black_rose">The Black Rose</option>
+                                        <option value="gem/seleds_weakening">Seled's Weakening</option>
+                                        <option value="gem/everlasting_torment">Everlasting Torment</option>
+                                        <option value="gem/chained_death">Chained Death</option>
+                                        <option value="gem/berserkers_eye">Berserker's Eye</option>
+                                        <option value="gem/mocking_laughter">Mocking Laughter</option>
+                                        <option value="gem/zod_stone">Zod Stone</option>
+                                        <option value="gem/caarsens_invigoration">Caarsen's Invigoration
+                                        </option>
+                                        <option value="gem/defiant_soul">Defiant soul</option>
+                                        <option value="gem/freedom_and_devotion">Freedom and Devotion</option>
+                                        <option value="gem/nightmare_wreath">Nightmare Wreath</option>
+                                        <option value="gem/respite_stone">Respite Stone</option>
+                                        <option value="gem/pain_of_subjugation">Pain of Subjugation</option>
+                                    </select>
+                                    <div class="gem-upgrade-wrapper" style="display: none;">
+                                        <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                        <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                            <div class="col-stars text-center" style="padding-left: 0 !important;">
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center" style="font-size: 20px;">
+                                            <h5>Rank <span class="gem-rank">1</span></h5>
+                                        </div>
+                                        <div style="font-size: 20px; margin-bottom: 10px" class="text-center">
+                                            Requirements: <br>
+                                            0/15 Gem power <br>
+                                            0/1 Rank 1 duplicates
+                                        </div>
+                                        <div class="row">
+                                            <img
+                                                    src="assets/button/upgrade.png"
+                                                    data-gem-name="gem/zod_stone"
+                                                    data-gem-stars="1"
+                                                    data-gem-rank="1"
+                                                    class="upgrade-gem-btn" style="max-width: 100%;"
+                                                    alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="fourth-gem">
+                                <div class="col" data-gem-name="berserkers_eye" data-gem-rank="1">
+                                    <select class="form-select form-select-lg mb-3 text-center gem-select"
+                                            aria-label=".form-select-lg example" style="margin-top: 15px">
+                                        <option selected>Select a Legendary Gem</option>
+                                        <option value="gem/trickshot_gem">Trickshot Gem</option>
+                                        <option value="gem/the_black_rose">The Black Rose</option>
+                                        <option value="gem/seleds_weakening">Seled's Weakening</option>
+                                        <option value="gem/everlasting_torment">Everlasting Torment</option>
+                                        <option value="gem/chained_death">Chained Death</option>
+                                        <option value="gem/berserkers_eye">Berserker's Eye</option>
+                                        <option value="gem/mocking_laughter">Mocking Laughter</option>
+                                        <option value="gem/zod_stone">Zod Stone</option>
+                                        <option value="gem/caarsens_invigoration">Caarsen's Invigoration
+                                        </option>
+                                        <option value="gem/defiant_soul">Defiant soul</option>
+                                        <option value="gem/freedom_and_devotion">Freedom and Devotion</option>
+                                        <option value="gem/nightmare_wreath">Nightmare Wreath</option>
+                                        <option value="gem/respite_stone">Respite Stone</option>
+                                        <option value="gem/pain_of_subjugation">Pain of Subjugation</option>
+                                    </select>
+                                    <div class="gem-upgrade-wrapper" style="display: none;">
+                                        <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                        <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                            <div class="col-stars text-center" style="padding-left: 0 !important;">
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center" style="font-size: 20px;">
+                                            <h5>Rank <span class="gem-rank">1</span></h5>
+                                        </div>
+                                        <div style="font-size: 20px; margin-bottom: 10px" class="text-center">
+                                            Requirements: <br>
+                                            0/15 Gem power <br>
+                                            0/1 Rank 1 duplicates
+                                        </div>
+                                        <div class="row">
+                                            <img
+                                                    src="assets/button/upgrade.png"
+                                                    data-gem-name="gem/zod_stone"
+                                                    data-gem-stars="1"
+                                                    data-gem-rank="1"
+                                                    class="upgrade-gem-btn" style="max-width: 100%;"
+                                                    alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="fifth-gem">
+                                <div class="col" data-gem-name="berserkers_eye" data-gem-rank="1">
+                                    <select class="form-select form-select-lg mb-3 text-center gem-select"
+                                            aria-label=".form-select-lg example" style="margin-top: 15px">
+                                        <option selected>Select a Legendary Gem</option>
+                                        <option value="gem/trickshot_gem">Trickshot Gem</option>
+                                        <option value="gem/the_black_rose">The Black Rose</option>
+                                        <option value="gem/seleds_weakening">Seled's Weakening</option>
+                                        <option value="gem/everlasting_torment">Everlasting Torment</option>
+                                        <option value="gem/chained_death">Chained Death</option>
+                                        <option value="gem/berserkers_eye">Berserker's Eye</option>
+                                        <option value="gem/mocking_laughter">Mocking Laughter</option>
+                                        <option value="gem/zod_stone">Zod Stone</option>
+                                        <option value="gem/caarsens_invigoration">Caarsen's Invigoration
+                                        </option>
+                                        <option value="gem/defiant_soul">Defiant soul</option>
+                                        <option value="gem/freedom_and_devotion">Freedom and Devotion</option>
+                                        <option value="gem/nightmare_wreath">Nightmare Wreath</option>
+                                        <option value="gem/respite_stone">Respite Stone</option>
+                                        <option value="gem/pain_of_subjugation">Pain of Subjugation</option>
+                                    </select>
+                                    <div class="gem-upgrade-wrapper" style="display: none;">
+                                        <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                        <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                            <div class="col-stars text-center" style="padding-left: 0 !important;">
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center" style="font-size: 20px;">
+                                            <h5>Rank <span class="gem-rank">1</span></h5>
+                                        </div>
+                                        <div style="font-size: 20px; margin-bottom: 10px" class="text-center">
+                                            Requirements: <br>
+                                            0/15 Gem power <br>
+                                            0/1 Rank 1 duplicates
+                                        </div>
+                                        <div class="row">
+                                            <img
+                                                    src="assets/button/upgrade.png"
+                                                    data-gem-name="gem/zod_stone"
+                                                    data-gem-stars="1"
+                                                    data-gem-rank="1"
+                                                    class="upgrade-gem-btn" style="max-width: 100%;"
+                                                    alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="sixth-gem">
+                                <div class="col" data-gem-name="berserkers_eye" data-gem-rank="1">
+                                    <select class="form-select form-select-lg mb-3 text-center gem-select"
+                                            aria-label=".form-select-lg example" style="margin-top: 15px">
+                                        <option selected>Select a Legendary Gem</option>
+                                        <option value="gem/trickshot_gem">Trickshot Gem</option>
+                                        <option value="gem/the_black_rose">The Black Rose</option>
+                                        <option value="gem/seleds_weakening">Seled's Weakening</option>
+                                        <option value="gem/everlasting_torment">Everlasting Torment</option>
+                                        <option value="gem/chained_death">Chained Death</option>
+                                        <option value="gem/berserkers_eye">Berserker's Eye</option>
+                                        <option value="gem/mocking_laughter">Mocking Laughter</option>
+                                        <option value="gem/zod_stone">Zod Stone</option>
+                                        <option value="gem/caarsens_invigoration">Caarsen's Invigoration
+                                        </option>
+                                        <option value="gem/defiant_soul">Defiant soul</option>
+                                        <option value="gem/freedom_and_devotion">Freedom and Devotion</option>
+                                        <option value="gem/nightmare_wreath">Nightmare Wreath</option>
+                                        <option value="gem/respite_stone">Respite Stone</option>
+                                        <option value="gem/pain_of_subjugation">Pain of Subjugation</option>
+                                    </select>
+                                    <div class="gem-upgrade-wrapper" style="display: none;">
+                                        <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                        <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                            <div class="col-stars text-center" style="padding-left: 0 !important;">
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                                <i class="fa-solid fa-star yellow-star col"></i>
+                                            </div>
+                                        </div>
+                                        <div class="text-center" style="font-size: 20px;">
+                                            <h5>Rank <span class="gem-rank">1</span></h5>
+                                        </div>
+                                        <div style="font-size: 20px; margin-bottom: 10px" class="text-center">
+                                            Requirements: <br>
+                                            0/15 Gem power <br>
+                                            0/1 Rank 1 duplicates
+                                        </div>
+                                        <div class="row">
+                                            <img
+                                                    src="assets/button/upgrade.png"
+                                                    data-gem-name="gem/zod_stone"
+                                                    data-gem-stars="1"
+                                                    data-gem-rank="1"
+                                                    class="upgrade-gem-btn" style="max-width: 100%;"
+                                                    alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <form action="https://www.paypal.com/donate" method="post" target="_top" class="donate-btn">
         <input type="hidden" name="hosted_button_id" value="NAQ3AXX63WNSW"/>
@@ -191,12 +593,6 @@
 <div class="modal fade" id="gem-info-modal" tabindex="-1" aria-labelledby="gemInfoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="gem-info-modal-content"></div>
-    </div>
-</div>
-
-<div class="modal fade" id="gem-amount-modal" tabindex="-1" aria-labelledby="gem-amount-modal-label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="gem-amount-modal-content"></div>
     </div>
 </div>
 
