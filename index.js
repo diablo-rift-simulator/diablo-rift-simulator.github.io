@@ -223,6 +223,143 @@
                     10: 0
                 }
             },
+        },
+        2: {
+            'gem/power_and_command': {
+                name: 'Power and Command',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/the_hunger': {
+                name: 'The Hunger',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/bloody_reach': {
+                name: 'Bloody Reach',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/cutthroats_grin': {
+                name: 'Cutthroats Grin',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/chained_death': {
+                name: 'Chained Death',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/lightning_core': {
+                name: 'Lighting Core',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/followers_burden': {
+                name: 'Followers Burden',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/unity_crystal': {
+                name: 'Unity Crystal',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/battleguard': {
+                name: 'Battleguard',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
         }
     };
 
@@ -463,10 +600,12 @@
             pitySystemActive = false;
         }
 
+        let gemName = '';
+
         switch (GEM_TYPES[index]) {
             case 1:
                 $('#one-star-count').text(++gemCount["1"]);
-                let gemName = ONE_STAR_GEMS[Math.floor(Math.random() * ONE_STAR_GEMS.length)];
+                gemName = ONE_STAR_GEMS[Math.floor(Math.random() * ONE_STAR_GEMS.length)];
                 gemInfo[1][gemName]['rank'][1]++;
                 $gemPower.text(gemPower += 1);
 
@@ -477,9 +616,11 @@
                 };
             case 2:
                 $('#two-star-count').text(++gemCount["2"]);
+                gemName = TWO_STAR_GEMS[Math.floor(Math.random() * TWO_STAR_GEMS.length)];
+                gemInfo[2][gemName]['rank'][1]++;
                 $gemPower.text(gemPower += 4);
                 return {
-                    name: TWO_STAR_GEMS[Math.floor(Math.random() * TWO_STAR_GEMS.length)],
+                    name: gemName,
                     rank: 2,
                     fiveStarGem: false
                 };
@@ -570,6 +711,7 @@
                             autoFillGemPower(20);
                             updateGemInfoGemRank($target, name, currentRank, stars);
                             currentRank++;
+                            updateRequirements($target, 1, 1);
                             $gemPowerForUpgrade.text(25);
                         }
                         break;
@@ -608,6 +750,8 @@
                 }
             }
         }
+
+        checkRequirements($target, stars, name, currentRank);
 
         return currentRank;
     }
@@ -661,21 +805,34 @@
         const $target = $(event.target);
         const $parent = $($target.parent());
         const selectedGem = $target.val();
+        const starRating = parseInt($('.star-rating-select', $parent).val());
         $target.css('background-image', 'none')
         $('.gem-icon', $parent).attr('src', 'assets/' + selectedGem + '.webp')
         $('.gem-upgrade-wrapper', $parent).show();
         $target.attr('disabled', 'disabled');
 
         $('.upgrade-gem-btn', $parent).attr('data-gem-name', selectedGem);
-        $('.upgrade-gem-btn', $parent).attr('data-gem-stars', $('.star-rating-select', $parent).val());
+        $('.upgrade-gem-btn', $parent).attr('data-gem-stars', starRating);
 
         $('.star-rating-select', $parent).remove();
-        if (ONE_STAR_GEMS.includes(selectedGem)) {
-            $resonance.text(resonance += 15);
-            if (gemPower > 0) {
-                autoFillGemPower(1);
+
+        switch (starRating) {
+            case 1: {
+                $resonance.text(resonance += 15);
+                if (gemPower > 0) {
+                    autoFillGemPower(1);
+                }
+                break;
+            }
+            case 2: {
+                $resonance.text(resonance += 30);
+                if (gemPower >= 4) {
+                    autoFillGemPower(4);
+                }
+                break;
             }
         }
+
         selectedGems.push(selectedGem);
     }
 
@@ -725,8 +882,72 @@
         return optionsHtml;
     }
 
-    function checkRequirements() {
+    function updateRequirements($target, duplicatesRank, duplicatesAmount) {
+        let requirementsHtml = '0/' + duplicatesAmount + '</span> Rank ' + duplicatesRank + ' duplicates';
+        $('.duplicates-wrapper').html(requirementsHtml);
+    }
 
+    function checkRequirements($target, stars, name, currentRank) {
+        if (currentRank === 10) {
+            return;
+        }
+
+        let disableUpgrade = false;
+
+        switch (stars) {
+            case 1: {
+                switch (currentRank) {
+                    case 1: {
+                        if (gemPower < 1) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                    }
+                    case 2: {
+                        if (gemPower < 5) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                    }
+                    case 3:
+                        if (gemPower < 10) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                    case 4:
+                        if (gemPower < 15) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                    case 5:
+                        if (gemPower < 20) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                    case 6:
+                        if (gemPower < 25 || gemInfo[1][name]['rank'][1] < 1) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                    case 7:
+                        if (gemPower < 30 || gemInfo[1][name]['rank'][1] < 1) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                    case 8:
+                        if (gemPower < 40 || gemInfo[1][name]['rank'][1] < 1) {
+                            disableUpgrade = true;
+                        }
+                        break;
+                }
+            }
+        }
+
+        if (disableUpgrade) {
+            $('.upgrade-gem-btn').addClass('upgrade-btn-disabled');
+        } else {
+            $('.upgrade-gem-btn').removeClass('upgrade-btn-disabled');
+        }
     }
 
     if (window.matchMedia("(max-width: 1200px)").matches) {

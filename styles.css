@@ -401,3 +401,7 @@ img {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+.upgrade-btn-disabled {
+    filter: grayscale(0.75);
+}
