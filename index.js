@@ -14,202 +14,218 @@
     ];
 
     let gemInfo = {
-        'gem/trickshot_gem': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/everlasting_torment': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/the_black_rose': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/chained_death': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/berserkers_eye': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/mocking_laughter': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/zod_stone': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/caarsens_invigoration': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/defiant_soul': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/freedom_and_devotion': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/respite_stone': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/seleds_weakening': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/pain_of_subjugation': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
-        'gem/nightmare_wreath': {
-            rank: {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0,
-                10: 0
-            }
-        },
+        1: {
+            'gem/trickshot_gem': {
+                name: 'Trickshot Gem',
+                rank: {
+                    1: 1,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/everlasting_torment': {
+                name: 'Everlasting Torment',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/the_black_rose': {
+                name: 'The Black Rose',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/chained_death': {
+                name: 'Chained Death',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/berserkers_eye': {
+                name: "Berserker's Eye",
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/mocking_laughter': {
+                name: 'Mocking Laughter',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/zod_stone': {
+                name: 'Zod Stone',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/caarsens_invigoration': {
+                name: "Caarsen's Invigoration",
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/defiant_soul': {
+                name: 'Defiant soul',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/freedom_and_devotion': {
+                name: 'Freedom and Devotion',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/respite_stone': {
+                name: 'Respite Stone',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/seleds_weakening': {
+                name: "Seled's Weakening",
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/pain_of_subjugation': {
+                name: 'Pain of Subjugation',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+            'gem/nightmare_wreath': {
+                name: 'Nightmare Wreath',
+                rank: {
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0,
+                    7: 0,
+                    8: 0,
+                    9: 0,
+                    10: 0
+                }
+            },
+        }
     };
 
     let totalGemCount = 0;
@@ -454,7 +470,7 @@
             case 1:
                 $('#one-star-count').text(++gemCount["1"]);
                 let gemName = ONE_STAR_GEMS[Math.floor(Math.random() * ONE_STAR_GEMS.length)];
-                gemInfo[gemName]['rank'][1]++;
+                gemInfo[1][gemName]['rank'][1]++;
                 $gemPower.text(gemPower += 1);
 
                 return {
@@ -641,7 +657,7 @@
         $target.attr('data-gem-rank', currentRank);
 
         if (currentRank > originalRank) {
-            $resonance.text(resonance+=15);
+            $resonance.text(resonance += 15);
         }
     }
 
@@ -652,9 +668,57 @@
         $('.gem-icon', $parent).attr('src', 'assets/' + $target.val() + '.webp')
         $('.gem-upgrade-wrapper', $parent).show();
         $target.attr('disabled', 'disabled');
+        $('.star-rating-select', $parent).remove();
         if (ONE_STAR_GEMS.includes($target.val())) {
             $resonance.text(resonance += 15);
         }
+    }
+
+    function gemOfStarRatingExist(starRating) {
+        for (const gem in gemInfo[starRating]) {
+            if (Object.values(gemInfo[starRating][gem].rank).reduce((a, b) => a + b) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function createStarRatingSelectOptions() {
+        let optionsHtml = '';
+        if (gemOfStarRatingExist(1)) {
+            optionsHtml += '<option value="1">1 Star</option>';
+        }
+
+        if (gemOfStarRatingExist(2)) {
+            optionsHtml += '<option value="2">2 Star</option>';
+        }
+
+        if (optionsHtml) {
+            optionsHtml = '<option selected>Select Star Rating</option>' + optionsHtml;
+        } else {
+            optionsHtml = '<option selected>Not enough gems</option>';
+        }
+
+        return optionsHtml;
+    }
+
+    function onStarRatingSelect(event) {
+        const $target = $(event.target);
+        const $parent = $($target.parent());
+        $('.gem-select', $parent).html(createGemSelectOptions($target.val()));
+    }
+
+    function createGemSelectOptions(starRating) {
+        let optionsHtml = '';
+        for (const gem in gemInfo[starRating]) {
+            if (Object.values(gemInfo[starRating][gem].rank).reduce((a, b) => a + b) > 0) {
+                optionsHtml += '<option value="' + gem + '">' + gemInfo[starRating][gem].name + '</option>'
+            }
+        }
+
+        optionsHtml = '<option selected>Select a Legendary Gem</option>' + optionsHtml;
+
+        return optionsHtml;
     }
 
     if (window.matchMedia("(max-width: 1200px)").matches) {
@@ -690,11 +754,15 @@
         .on('mouseup', buttonReleased)
         .on('touchstart', buttonPressed);
 
-    $('.gem-select').on('change', onGemSelect)
+    $('.gem-select').on('change', onGemSelect);
+    $('.star-rating-select').on('change', onStarRatingSelect);
 
     $('img[data-bs-toggle="tab"]').on('shown.bs.tab', function (event) {
-        $('.img-tab').css('filter', 'brightness(100%)')
-        $(event.target).css('filter', 'brightness(200%)');
+        const $target = $(event.target);
+        $('.img-tab').css('filter', 'brightness(100%)');
+        $target.css('filter', 'brightness(200%)');
+
+        $('.star-rating-select', $($target.attr('href'))).html(createStarRatingSelectOptions());
     });
 
     init();
