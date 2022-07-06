@@ -39,7 +39,6 @@
         'gem/the_hunger',
         'gem/bloody_reach',
         'gem/cutthroats_grin',
-        'gem/chained_death',
         'gem/lightning_core',
         'gem/battleguard',
         'gem/followers_burden',
