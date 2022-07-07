@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>$25 Rift Simulator</title>
-    <meta name="description" content="Gamble Diablo Immortal Legendary Gems for free">
+    <meta name="description" content="Gamble And Upgrade Diablo Immortal Legendary Gems for free">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -170,6 +170,416 @@
     <div class="buttons">
         <img src="assets/button/spin_with_extra_value.png" id="spin" style="cursor: pointer" alt="spin">
         <img src="assets/button/auto_spin.png" id="auto-spin" style="cursor: pointer" alt="auto-spin">
+        <div class="modal fade" style="color: black" id="gem-upgrade-modal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content gem-upgrade-modal-content">
+                    <div class="row nav nav-tabs border-0" role="tablist" style="padding: 10px 10px 5px;">
+                        <div role="presentation" class="col">
+                            <img src="assets/gem_upgrade/inventory.png"
+                                 class="img-tab"
+                                 href="#inventory"
+                                 aria-controls="inventory"
+                                 role="tab"
+                                 data-bs-toggle="tab" alt=""/>
+                        </div>
+                        <div role="presentation" class="col">
+                            <img src="assets/gem_upgrade/upgrade_gems.png"
+                                 class="img-tab"
+                                 href="#gem-upgrade"
+                                 aria-controls="gem-upgrade"
+                                 role="tab"
+                                 data-bs-toggle="tab" alt=""/>
+                        </div>
+                        <div role="presentation" class="col" id="statistics-tab">
+                            <img src="assets/gem_upgrade/statistics.png"
+                                 class="img-tab"
+                                 href="#statistics"
+                                 aria-controls="statistics"
+                                 role="tab"
+                                 data-bs-toggle="tab" alt=""/>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane" id="inventory">
+                            <div class="modal-header border-0" style="padding-bottom: 0; padding-top: 0">
+                                <h5>Resonance: <span class="resonance">0</span></h5><br>
+                                <h5>Gem Power: <span class="gem-power">0</span></h5>
+                            </div>
+                            <div class="form-check form-switch" style="margin-left: 20px">
+                                <input class="form-check-input" type="checkbox" checked id="consume-all-gems">
+                                <label class="form-check-label" for="consume-all-gems" style="font-size: 14px">Consume ALL gems</label>
+                            </div>
+                            <div class="modal-body modal-upgrade-body overflow-auto" style="padding-top: 0; max-height: 400px;">
+                                <div class="col" id="inventory-body" style="padding-top: 20px; text-align: left; max-height: 500px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="gem-upgrade">
+                            <div class="modal-header border-0" style="padding-bottom: 0; padding-top: 0">
+                                <h5>Resonance: <span class="resonance">0</span></h5><br>
+                                <h5>Gem Power: <span class="gem-power">0</span></h5>
+                            </div>
+                            <div class="modal-body modal-upgrade-body" style="padding-top: 0">
+                                <div class="row nav nav-tabs border-0" role="tablist">
+                                    <div role="presentation" class="col">
+                                        <img src="assets/gem_upgrade/tab/tab1.jpg"
+                                             class="img-tab"
+                                             href="#first-gem"
+                                             aria-controls="first-gem"
+                                             role="tab"
+                                             data-bs-toggle="tab" alt=""/>
+                                    </div>
+                                    <div role="presentation" class="col">
+                                        <img src="assets/gem_upgrade/tab/tab2.jpg"
+                                             class="img-tab"
+                                             href="#second-gem"
+                                             aria-controls="second-gem"
+                                             role="tab"
+                                             data-bs-toggle="tab" alt=""/>
+                                    </div>
+                                    <div role="presentation" class="col">
+                                        <img src="assets/gem_upgrade/tab/tab3.jpg"
+                                             class="img-tab"
+                                             href="#third-gem"
+                                             aria-controls="third-gem"
+                                             role="tab"
+                                             data-bs-toggle="tab" alt=""/>
+                                    </div>
+                                    <div role="presentation" class="col">
+                                        <img src="assets/gem_upgrade/tab/tab4.jpg"
+                                             class="img-tab"
+                                             href="#fourth-gem"
+                                             aria-controls="fourth-gem"
+                                             role="tab"
+                                             data-bs-toggle="tab" alt=""/>
+                                    </div>
+                                    <div role="presentation" class="col">
+                                        <img src="assets/gem_upgrade/tab/tab5.jpg"
+                                             class="img-tab"
+                                             href="#fifth-gem"
+                                             aria-controls="fifth-gem"
+                                             role="tab"
+                                             data-bs-toggle="tab" alt=""/>
+                                    </div>
+                                    <div role="presentation" class="col">
+                                        <img src="assets/gem_upgrade/tab/tab6.jpg"
+                                             class="img-tab"
+                                             href="#sixth-gem"
+                                             aria-controls="sixth-gem"
+                                             role="tab"
+                                             data-bs-toggle="tab" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane" id="first-gem">
+                                        <div class="col" data-gem-rank="1">
+                                            <select class="form-select form-select-lg mb-3 text-center star-rating-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select Star Rating</option>
+                                            </select>
+                                            <select disabled="disabled"
+                                                    class="form-select form-select-lg mb-3 text-center gem-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select a Legendary Gem</option>
+                                            </select>
+                                            <div class="text-center gem-name" style="display: none; padding-top: 15px; padding-bottom: 10px"></div>
+                                            <div class="gem-upgrade-wrapper" style="display: none;">
+                                                <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                                <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                                    <div class="col-stars text-center"
+                                                         style="padding-left: 0 !important; margin-bottom: 10px !important; margin-top: 10px !important;">
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center" style="font-size: 20px;">
+                                                    <h5>Rank <span class="gem-rank">1</span> <i class="fa-solid fa-arrow-right gem-upgrade-arrow" style="color: green"> </i> <span class="gem-rank-next">2</span></h5>
+                                                </div>
+                                                <div style="font-size: 20px; margin-bottom: 10px"
+                                                     class="text-center gem-upgrade-requirements">
+                                                    Requirements: <br>
+                                                    <span class="gem-power">0</span>/<span
+                                                        class="gem-power-for-upgrade">1</span> Gem Power<br>
+                                                    <div class="duplicates-wrapper"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <img
+                                                            src="assets/button/upgrade.png"
+                                                            data-gem-name=""
+                                                            data-gem-stars=""
+                                                            data-gem-rank="1"
+                                                            class="upgrade-gem-btn" style="max-width: 50%;"
+                                                            alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="second-gem">
+                                        <div class="col" data-gem-rank="1">
+                                            <select class="form-select form-select-lg mb-3 text-center star-rating-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select Star Rating</option>
+                                            </select>
+                                            <select disabled="disabled"
+                                                    class="form-select form-select-lg mb-3 text-center gem-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select a Legendary Gem</option>
+                                            </select>
+                                            <div class="text-center gem-name" style="display: none; padding-top: 15px; padding-bottom: 10px"></div>
+                                            <div class="gem-upgrade-wrapper" style="display: none;">
+                                                <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                                <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                                    <div class="col-stars text-center"
+                                                         style="padding-left: 0 !important; margin-bottom: 10px !important; margin-top: 10px !important;">
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center" style="font-size: 20px;">
+                                                    <h5>Rank <span class="gem-rank">1</span> <i class="fa-solid fa-arrow-right gem-upgrade-arrow" style="color: green"> </i> <span class="gem-rank-next">2</span></h5>
+                                                </div>
+                                                <div style="font-size: 20px; margin-bottom: 10px"
+                                                     class="text-center gem-upgrade-requirements">
+                                                    Requirements: <br>
+                                                    <span class="gem-power">0</span>/<span
+                                                        class="gem-power-for-upgrade">1</span> Gem Power<br>
+                                                    <div class="duplicates-wrapper"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <img
+                                                            src="assets/button/upgrade.png"
+                                                            data-gem-name=""
+                                                            data-gem-stars=""
+                                                            data-gem-rank="1"
+                                                            class="upgrade-gem-btn" style="max-width: 50%;"
+                                                            alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="third-gem">
+                                        <div class="col" data-gem-rank="1">
+                                            <select class="form-select form-select-lg mb-3 text-center star-rating-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select Star Rating</option>
+                                            </select>
+                                            <select disabled="disabled"
+                                                    class="form-select form-select-lg mb-3 text-center gem-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select a Legendary Gem</option>
+                                            </select>
+                                            <div class="text-center gem-name" style="display: none; padding-top: 15px; padding-bottom: 10px"></div>
+                                            <div class="gem-upgrade-wrapper" style="display: none;">
+                                                <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                                <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                                    <div class="col-stars text-center"
+                                                         style="padding-left: 0 !important; margin-bottom: 10px !important; margin-top: 10px !important;">
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center" style="font-size: 20px;">
+                                                    <h5>Rank <span class="gem-rank">1</span> <i class="fa-solid fa-arrow-right gem-upgrade-arrow" style="color: green"> </i> <span class="gem-rank-next">2</span></h5>
+                                                </div>
+                                                <div style="font-size: 20px; margin-bottom: 10px"
+                                                     class="text-center gem-upgrade-requirements">
+                                                    Requirements: <br>
+                                                    <span class="gem-power">0</span>/<span
+                                                        class="gem-power-for-upgrade">1</span> Gem Power<br>
+                                                    <div class="duplicates-wrapper"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <img
+                                                            src="assets/button/upgrade.png"
+                                                            data-gem-name=""
+                                                            data-gem-stars=""
+                                                            data-gem-rank="1"
+                                                            class="upgrade-gem-btn" style="max-width: 50%;"
+                                                            alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="fourth-gem">
+                                        <div class="col" data-gem-rank="1">
+                                            <select class="form-select form-select-lg mb-3 text-center star-rating-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select Star Rating</option>
+                                            </select>
+                                            <select disabled="disabled"
+                                                    class="form-select form-select-lg mb-3 text-center gem-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select a Legendary Gem</option>
+                                            </select>
+                                            <div class="text-center gem-name" style="display: none; padding-top: 15px; padding-bottom: 10px"></div>
+                                            <div class="gem-upgrade-wrapper" style="display: none;">
+                                                <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                                <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                                    <div class="col-stars text-center"
+                                                         style="padding-left: 0 !important; margin-bottom: 10px !important; margin-top: 10px !important;">
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center" style="font-size: 20px;">
+                                                    <h5>Rank <span class="gem-rank">1</span> <i class="fa-solid fa-arrow-right gem-upgrade-arrow" style="color: green"> </i> <span class="gem-rank-next">2</span></h5>
+                                                </div>
+                                                <div style="font-size: 20px; margin-bottom: 10px"
+                                                     class="text-center gem-upgrade-requirements">
+                                                    Requirements: <br>
+                                                    <span class="gem-power">0</span>/<span
+                                                        class="gem-power-for-upgrade">1</span> Gem Power<br>
+                                                    <div class="duplicates-wrapper"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <img
+                                                            src="assets/button/upgrade.png"
+                                                            data-gem-name=""
+                                                            data-gem-stars=""
+                                                            data-gem-rank="1"
+                                                            class="upgrade-gem-btn" style="max-width: 50%;"
+                                                            alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="fifth-gem">
+                                        <div class="col" data-gem-rank="1">
+                                            <select class="form-select form-select-lg mb-3 text-center star-rating-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select Star Rating</option>
+                                            </select>
+                                            <select disabled="disabled"
+                                                    class="form-select form-select-lg mb-3 text-center gem-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select a Legendary Gem</option>
+                                            </select>
+                                            <div class="text-center gem-name" style="display: none; padding-top: 15px; padding-bottom: 10px"></div>
+                                            <div class="gem-upgrade-wrapper" style="display: none;">
+                                                <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                                <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                                    <div class="col-stars text-center"
+                                                         style="padding-left: 0 !important; margin-bottom: 10px !important; margin-top: 10px !important;">
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center" style="font-size: 20px;">
+                                                    <h5>Rank <span class="gem-rank">1</span> <i class="fa-solid fa-arrow-right gem-upgrade-arrow" style="color: green"> </i> <span class="gem-rank-next">2</span></h5>
+                                                </div>
+                                                <div style="font-size: 20px; margin-bottom: 10px"
+                                                     class="text-center gem-upgrade-requirements">
+                                                    Requirements: <br>
+                                                    <span class="gem-power">0</span>/<span
+                                                        class="gem-power-for-upgrade">1</span> Gem Power<br>
+                                                    <div class="duplicates-wrapper"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <img
+                                                            src="assets/button/upgrade.png"
+                                                            data-gem-name=""
+                                                            data-gem-stars=""
+                                                            data-gem-rank="1"
+                                                            class="upgrade-gem-btn" style="max-width: 50%;"
+                                                            alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="sixth-gem">
+                                        <div class="col" data-gem-rank="1">
+                                            <select class="form-select form-select-lg mb-3 text-center star-rating-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select Star Rating</option>
+                                            </select>
+                                            <select disabled="disabled"
+                                                    class="form-select form-select-lg mb-3 text-center gem-select"
+                                                    aria-label=".form-select-lg example"
+                                                    style="margin-top: 15px; text-align-last:center;">
+                                                <option selected>Select a Legendary Gem</option>
+                                            </select>
+                                            <div class="text-center gem-name" style="display: none; padding-top: 15px; padding-bottom: 10px"></div>
+                                            <div class="gem-upgrade-wrapper" style="display: none;">
+                                                <img src="assets/gem/zod_stone.webp" class="gem-icon" alt="">
+                                                <div class="row gem-upgrade-row-inner" style="font-size: 16px">
+                                                    <div class="col-stars text-center"
+                                                         style="padding-left: 0 !important; margin-bottom: 10px !important; margin-top: 10px !important;">
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                        <i class="fa-solid fa-star yellow-star col"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center" style="font-size: 20px;">
+                                                    <h5>Rank <span class="gem-rank">1</span> <i class="fa-solid fa-arrow-right gem-upgrade-arrow" style="color: green"> </i> <span class="gem-rank-next">2</span></h5>
+                                                </div>
+                                                <div style="font-size: 20px; margin-bottom: 10px"
+                                                     class="text-center gem-upgrade-requirements">
+                                                    Requirements: <br>
+                                                    <span class="gem-power">0</span>/<span
+                                                        class="gem-power-for-upgrade">1</span> Gem Power<br>
+                                                    <div class="duplicates-wrapper"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <img
+                                                            src="assets/button/upgrade.png"
+                                                            data-gem-name=""
+                                                            data-gem-stars=""
+                                                            data-gem-rank="1"
+                                                            class="upgrade-gem-btn" style="max-width: 50%;"
+                                                            alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="statistics">
+                            <div class="modal-header border-0" style="padding-bottom: 0; padding-top: 0">
+                                <h5>Resonance: <span class="resonance">0</span></h5><br>
+                                <h5>Gem Power: <span class="gem-power">0</span></h5>
+                            </div>
+                            <div class="modal-body modal-upgrade-body overflow-auto" style="padding-top: 0">
+                                <div id="stats-modal-content" class="stats-modal-content" style="padding-top: 0 !important; padding-bottom: 0 !important; max-height: 280px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <form action="https://www.paypal.com/donate" method="post" target="_top" class="donate-btn">
         <input type="hidden" name="hosted_button_id" value="NAQ3AXX63WNSW"/>
@@ -177,15 +587,9 @@
                title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"/>
     </form>
 
-    <button type="button" class="btn btn-modal" data-bs-toggle="modal" data-bs-target="#stats-modal">
+    <button type="button" class="btn btn-modal" data-bs-toggle="modal" data-bs-target="#gem-upgrade-modal">
         <i class="fas fa-bars fa-2x ham-icon"></i>
     </button>
-</div>
-
-<div class="modal fade" id="stats-modal" tabindex="-1" aria-labelledby="statsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div id="stats-modal-content" class="modal-content"></div>
-    </div>
 </div>
 
 <div class="modal fade" id="gem-info-modal" tabindex="-1" aria-labelledby="gemInfoModalLabel" aria-hidden="true">
@@ -194,12 +598,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="gem-amount-modal" tabindex="-1" aria-labelledby="gem-amount-modal-label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="gem-amount-modal-content"></div>
-    </div>
-</div>
-
-<script src="index.js"></script>
+<script src="dist/index.min.js"></script>
 </body>
 </html>

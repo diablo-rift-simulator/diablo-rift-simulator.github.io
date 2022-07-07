@@ -52,12 +52,11 @@ body {
     border: none;
 }
 
-.modal-content {
-    height: 50vh;
-    text-align: left;
-    justify-content: center;
-    padding: 15%;
-    opacity: 0.97;
+.stats-modal-content {
+    height: 50vh !important;
+    text-align: left !important;
+    justify-content: center !important;
+    padding: 15% !important;
     background-color: darkgray !important;
 }
 
@@ -106,6 +105,18 @@ body {
 }
 
 #stars {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: 0 13px;
+    margin-top: 5px;
+    font-size: 10px;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.stars {
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -209,6 +220,16 @@ button {
     right: 0;
 }
 
+@media (min-width: 300px) {
+    #inventory-body {
+        font-size: 12px;
+    }
+
+    .stats-modal-content {
+        font-size: 14px;
+    }
+}
+
 @media (min-width: 400px) {
     .doors {
         display: grid;
@@ -245,6 +266,10 @@ button {
         position: relative;
         bottom: unset;
         right: unset;
+    }
+
+    #inventory-body {
+        font-size: 16px;
     }
 }
 
@@ -303,6 +328,14 @@ button {
     .buttons {
         margin-top: 80px;
     }
+
+    #inventory-body {
+        font-size: 16px;
+    }
+
+    .stats-modal-content {
+        font-size: 22px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -316,10 +349,6 @@ button {
 
     #spin {
         margin-bottom: 0;
-    }
-
-    .btn-modal {
-        display: none !important;
     }
 
     .numbers {
@@ -337,11 +366,19 @@ button {
     .col-stars {
         text-align: left;
     }
+
+    #inventory-body {
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 1450px) {
     .empty-centered {
         display: block;
+    }
+
+    #inventory-body {
+        font-size: 16px;
     }
 }
 
@@ -353,4 +390,68 @@ button {
 
 .button-pressed {
     transform: translateY(4px);
+}
+
+.gem-icon {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100px !important;
+    height: 120px !important;
+    border-radius: 25px !important;
+}
+
+.gem-upgrade-modal-content {
+    height: auto;
+    justify-content: center;
+    /*width: 64px !important;*/
+    /*height: 64px !important;*/
+    background-color: darkgray !important;
+}
+
+.gem-upgrade-row {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.gem-upgrade-row-inner{
+    margin-left: 0 !important;
+}
+
+.img-tab {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.no-border {
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.upgrade-btn-disabled {
+    filter: grayscale(0.75);
+}
+
+:root {
+    touch-action: pan-x pan-y;
+    height: 100%
+}
+
+select {
+    -webkit-appearance: none; /* turn off drop-down arrow*/
+    -moz-appearance: none;
+    border: solid 1px grey;
+    font-size: 1rem;
+    padding: 5px;
+    /* direction: rtl; */
 }
