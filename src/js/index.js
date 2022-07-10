@@ -1272,7 +1272,8 @@
         $('#gem-upgrade-modal').modal({
             backdrop: 'static',
             keyboard: false
-        })
+        });
+        $('#news-modal').modal('show');
     });
 
     init();
