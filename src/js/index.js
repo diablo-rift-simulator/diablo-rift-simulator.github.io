@@ -398,28 +398,6 @@
                     pool.push(gem.name);
 
                     $boxesClone.setAttribute('selected-gem', gem.name);
-                    $boxesClone.addEventListener(
-                        "transitionstart",
-                        function () {
-                            this.querySelectorAll(".box").forEach(($box) => {
-                                $box.style.filter = "blur(1px)";
-                            });
-                        },
-                        {once: true}
-                    );
-
-                    $boxesClone.addEventListener(
-                        "transitionend",
-                        function () {
-                            this.querySelectorAll(".box").forEach(($box, index) => {
-                                $box.style.filter = "blur(0)";
-                                if (index > 0) {
-                                    this.removeChild($box);
-                                }
-                            });
-                        },
-                        {once: true}
-                    );
                 }
 
                 for (let i = pool.length - 1; i >= 0; i--) {
@@ -1273,7 +1251,6 @@
             backdrop: 'static',
             keyboard: false
         });
-        $('#news-modal').modal('show');
     });
 
     init();
